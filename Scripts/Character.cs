@@ -12,9 +12,19 @@ namespace CharacterNode
     public class Character : KinematicBody2D
     {
         /// <summary>
+        /// How high the character can jump.
+        /// </summary>
+        public int jumpForce = 300;
+
+        /// <summary>
+        /// Can the character currently jump?
+        /// </summary>
+        public bool canJump = false;
+
+        /// <summary>
         /// The current state of the character.
         /// </summary>
-        public CharacterState state {get; private set;}
+        public CharacterState state { get; private set; }
 
         /// <summary>
         /// Does this Character slide or collide when moving?
@@ -39,13 +49,16 @@ namespace CharacterNode
         /// <summary>
         /// The speed of the Character.
         /// </summary>
-        public float speed {get; protected set;}
+        public float speed = 200;
+
+        public bool IsDead { get { return health <= 0; } }
 
         public override void _Ready()
         {
             base._Ready();
             // Default value.
             speed = 200;
+            Die();
         }
 
         protected virtual void PhysicsProcess(float delta)
@@ -113,19 +126,19 @@ namespace CharacterNode
         }
 
         /// <summary>
-        ///     Take damage.
+        /// This gets called when the Character dies.
         /// </summary>
-        /// <param name="damage">Amount of damage to take.</param>
-        /// <returns>1 if the character died, 0 otherwise.</returns>
-        public int TakeDamage(int damage)
+        protected virtual async void Die()
         {
-            health -= damage;
-            if (health <= 0)
-            {
-                QueueFree(); // TODO: Death animation?
-                return 1;
-            }
-            return 0;
+            // Rotate the character
+            Rotate(180);
+
+            // Remove the CollisionShape
+            RemoveChild(GetNode<CollisionShape2D>("CollisionShape2D"));
+
+            // Wait a second and then QueueFree the Character.
+            await System.Threading.Tasks.Task.Delay(1000);
+            QueueFree();
         }
 
         /// <summary>
@@ -139,8 +152,31 @@ namespace CharacterNode
             {
                 damageToGive = attackPower;
             }
-            int result = target.TakeDamage((int)damageToGive);
-            // TODO: Do something with result
+            target.health -= damageToGive.Value;
+            // Check if the target is dead.
+            if (target.IsDead)
+            {
+                // Run the Die code
+                target.Die();
+            }
+        }
+
+        /// <summary>
+        /// Jump the Player. This can be overridden by sub Player classes.
+        /// </summary>   
+        protected virtual void Jump()
+        {
+            // If player state = OnGround, set canJump to true.
+            if (state == CharacterState.OnGround)
+            {
+                canJump = true;
+            }
+
+            if (canJump)
+            {
+                velocity.y = -jumpForce;
+                canJump = false;
+            }
         }
     }
 }
