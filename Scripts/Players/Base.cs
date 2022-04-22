@@ -1,10 +1,10 @@
 using Godot;
 using System;
-using CharacterNode;
+using Character;
 
 namespace Player
 {
-    public class Base : Character
+    public class Base : Character.Node
     {
         protected override void PhysicsProcess(float delta)
         {
