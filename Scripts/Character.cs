@@ -1,19 +1,16 @@
 using Godot;
 using System;
 
-namespace CharacterNode
+namespace Character
 {
-    public enum CharacterState
+    public enum State
     {
         OnGround,
         InAir
     }
 
-    public class Character : KinematicBody2D
+    public class Node : KinematicBody2D
     {
-        /// <summary>
-        /// How high the character can jump.
-        /// </summary>
         public int jumpForce = 300;
 
         /// <summary>
@@ -24,31 +21,19 @@ namespace CharacterNode
         /// <summary>
         /// The current state of the character.
         /// </summary>
-        public CharacterState state { get; private set; }
+        public State state { get; private set; }
 
         /// <summary>
         /// Does this Character slide or collide when moving?
         /// </summary>
         public bool slide = true;
 
-        /// <summary>
-        /// The current velocity of the Character.
-        /// </summary>
         public Vector2 velocity = new Vector2();
 
-        /// <summary>
-        /// The attack player the player boasts!
-        /// </summary>
         public int attackPower = 10;
 
-        /// <summary>
-        /// The current health of the Character.
-        /// </summary>
         public int health = 100;
 
-        /// <summary>
-        /// The speed of the Character.
-        /// </summary>
         public float speed = 200;
 
         public bool IsDead { get { return health <= 0; } }
@@ -56,11 +41,13 @@ namespace CharacterNode
         public override void _Ready()
         {
             base._Ready();
-            // Default value.
-            speed = 200;
             Die();
         }
 
+        /// <summary>
+        /// Classes that inherit from Character.Node should override this method if they want to 
+        /// run during _PhysicsProcess.
+        /// </summary>
         protected virtual void PhysicsProcess(float delta)
         {
             CheckCharacterState();
@@ -83,7 +70,7 @@ namespace CharacterNode
             }
 
             // Only apply gravity if the character is InAir.
-            if (state == CharacterState.InAir)
+            if (state == State.InAir)
             {
                 velocity.y += delta * -9.8f;
             }
@@ -97,24 +84,23 @@ namespace CharacterNode
             // If the character is on the ground, set the state to OnGround.
             if (IsOnFloor())
             {
-                state = CharacterState.OnGround;
+                state = State.OnGround;
             }
             // If the character is not on the ground, set the state to InAir.
             else
             {
-                state = CharacterState.InAir;
+                state = State.InAir;
             }
         }
 
         /// <summary>
         /// Move the Character horizontally.
         /// </summary>
-        /// <param name="direction">The direction to move the Character</param>
+        /// <param name="movement">How to move the Character</param>
         /// <param name="delta">The delta time.</param>
-        public void MoveH(float direction, float delta)
+        public void MoveH(float movement, float delta)
         {
-            velocity.x = direction * delta;
-            GD.Print(velocity);
+            velocity.x = movement * delta;
             if (slide)
             {
                 MoveAndSlide(velocity, new Vector2(0, -1));
@@ -146,7 +132,7 @@ namespace CharacterNode
         /// </summary>
         /// <param name="target">The character to attack.</param>
         /// <param name="damageToGive">The amount of damage to give to the character, if null, the attackPower is used.</param>
-        public void Attack(Character target, int? damageToGive)
+        public void Attack(Character.Node target, int? damageToGive)
         {
             if (damageToGive == null)
             {
@@ -167,7 +153,7 @@ namespace CharacterNode
         protected virtual void Jump()
         {
             // If player state = OnGround, set canJump to true.
-            if (state == CharacterState.OnGround)
+            if (state == State.OnGround)
             {
                 canJump = true;
             }
