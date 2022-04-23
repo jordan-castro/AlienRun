@@ -34,15 +34,9 @@ namespace Character
 
         public int health = 100;
 
-        public float speed = 200;
+        public float speed;
 
         public bool IsDead { get { return health <= 0; } }
-
-        public override void _Ready()
-        {
-            base._Ready();
-            Die();
-        }
 
         /// <summary>
         /// Classes that inherit from Character.Node should override this method if they want to 

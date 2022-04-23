@@ -6,6 +6,11 @@ namespace Player
 {
     public class Base : Character.Node
     {
+        public Base()
+        {
+            speed = 200;
+        }
+
         protected override void PhysicsProcess(float delta)
         {
             base.PhysicsProcess(delta);
