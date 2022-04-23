@@ -21,7 +21,7 @@ namespace Character
         /// <summary>
         /// The current state of the character.
         /// </summary>
-        public State state { get; private set; }
+        public State State { get; private set; }
 
         /// <summary>
         /// Does this Character slide or collide when moving?
@@ -64,7 +64,7 @@ namespace Character
             }
 
             // Only apply gravity if the character is InAir.
-            if (state == State.InAir)
+            if (this.State == State.InAir)
             {
                 velocity.y += delta * -9.8f;
             }
@@ -78,12 +78,12 @@ namespace Character
             // If the character is on the ground, set the state to OnGround.
             if (IsOnFloor())
             {
-                state = State.OnGround;
+                this.State = State.OnGround;
             }
             // If the character is not on the ground, set the state to InAir.
             else
             {
-                state = State.InAir;
+                this.State = State.InAir;
             }
         }
 
@@ -147,7 +147,7 @@ namespace Character
         protected virtual void Jump()
         {
             // If player state = OnGround, set canJump to true.
-            if (state == State.OnGround)
+            if (this.State == State.OnGround)
             {
                 canJump = true;
             }
