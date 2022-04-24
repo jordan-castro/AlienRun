@@ -6,15 +6,27 @@ namespace Player
 {
     public class Base : Character.Node
     {
+        float Speed {
+            get {
+                if (Input.IsActionPressed("ui_sprint"))
+                {
+                    return speed + 50;
+                }
+
+                return speed;
+            }
+        }
+
         public override void _Ready()
         {
-            Speed = 100;
+            speed = 100;
         }
 
         protected override void PhysicsProcess(float delta)
         {
             base.PhysicsProcess(delta);
-            // Handle user input            
+
+            // Handle user input
             if (Input.IsActionPressed("ui_right"))
             {
                 velocity.x = Speed;
@@ -23,7 +35,7 @@ namespace Player
             {
                 velocity.x = -Speed;
             }
-            else 
+            else
             {
                 velocity.x = 0;
             }
