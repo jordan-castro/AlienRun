@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using Utils;
 
 /// <summary>
 /// Base class for most movable entities in the game.
@@ -46,6 +45,7 @@ namespace Character
             set
             {
                 health = value;
+                GD.Print(Name + "'s Health: " + health);
                 if (health <= 0)
                 {
                     Die();
@@ -170,18 +170,6 @@ namespace Character
             if (sprite == null)
             {
                 sprite = GetNode<Animation>("Animation");
-            }
-        }
-
-                // Checking for collisions
-        private void CheckForCollisions()
-        {
-            // Grab the collisions based on the MoveAndSlide
-            int collisions = GetSlideCount();
-            for (int i = 0; i < collisions; i++)
-            {
-                KinematicCollision2D collision = GetSlideCollision(i);
-                HandleCollision(collision.Collider);
             }
         }
     }
