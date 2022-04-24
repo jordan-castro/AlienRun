@@ -8,13 +8,8 @@ namespace Enemy
     {
         public override void _Ready()
         {
-            speed = 75;
-            // Randomly choose a direction to move in
-            Random rand = new Random();
-            if (rand.Next(2) == 0)
-            {
-                speed *= -1;
-            }
+            // Start towards the player
+            speed = -25;
         }
 
         protected override void PhysicsProcess(float delta)
