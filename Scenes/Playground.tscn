@@ -1,17 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Players/Default.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Tiles/Grass.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Tiles/Tree.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Tiles/Leaves.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Enemies/Beetle.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Grass" parent="." instance=ExtResource( 2 )]
 tile_data = PoolIntArray( 1114112, 5, 0, 1114113, 6, 0, 1114114, 6, 0, 1114115, 6, 0, 1114116, 6, 0, 1114117, 6, 0, 1114118, 6, 0, 1114119, 6, 0, 1114120, 6, 0, 1114121, 6, 0, 1114122, 6, 0, 1114123, 6, 0, 1114124, 6, 0, 1114125, 6, 0, 1114126, 6, 0, 1114127, 6, 0, 1114128, 6, 0, 1114129, 6, 0, 1114130, 6, 0, 1114131, 6, 0, 1114132, 6, 0, 1114133, 6, 0, 1114134, 6, 0, 1114135, 6, 0, 1114136, 6, 0, 1114137, 6, 0, 1114138, 6, 0, 1114139, 6, 0, 1114140, 6, 0, 1114141, 6, 0, 1114142, 6, 0, 1114143, 6, 0, 1114144, 6, 0, 1114145, 6, 0, 1114146, 6, 0, 1114147, 6, 0, 1114148, 6, 0, 1114149, 6, 0, 1114150, 6, 0, 1114151, 6, 0, 1114152, 6, 0, 1114153, 6, 0, 1114154, 6, 0, 1114155, 6, 0, 1114156, 6, 0, 1114157, 6, 0, 1114158, 6, 0, 1114159, 6, 0, 1114160, 6, 0, 1114161, 6, 0, 1114162, 6, 0, 1114163, 6, 0, 1114164, 6, 0, 1114165, 7, 0 )
-
-[node name="DefaultPlayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( 206, 279 )
 
 [node name="Tree" parent="." instance=ExtResource( 3 )]
 tile_data = PoolIntArray( 851997, 1, 0, 917533, 6, 0, 917534, 8, 0, 917535, 7, 0, 983069, 3, 0, 1048605, 5, 0 )
@@ -21,3 +19,9 @@ tile_data = PoolIntArray( 720924, 4, 0, 720925, 6, 0, 720926, 8, 0, 786460, 5, 0
 
 [node name="Leaves" parent="Leaves" instance=ExtResource( 4 )]
 tile_data = PoolIntArray( 655386, 4, 0, 655387, 6, 0, 655388, 8, 0, 655390, 4, 0, 655391, 6, 0, 655392, 8, 0, 720922, 5, 0, 720923, 7, 0, 720924, 9, 0, 720926, 5, 0, 720927, 7, 0, 720928, 9, 0, 786458, 10, 0, 786459, 11, 0, 786460, 12, 0, 786462, 10, 0, 786463, 11, 0, 786464, 12, 0 )
+
+[node name="Beetle" parent="." instance=ExtResource( 5 )]
+position = Vector2( 569, 293 )
+
+[node name="DefaultPlayer" parent="." instance=ExtResource( 1 )]
+position = Vector2( 206, 279 )
