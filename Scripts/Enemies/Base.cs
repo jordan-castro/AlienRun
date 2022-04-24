@@ -9,20 +9,18 @@ namespace Enemy
         public override void _Ready()
         {
             // Start towards the player
-            speed = -25;
+            Speed = -25;
         }
 
         protected override void PhysicsProcess(float delta)
         {
             base.PhysicsProcess(delta);
-            
+
             // Check if the enemy is on a wall
             if (IsOnWall())
             {
-                speed = -speed;
+                velocity.x = -velocity.x;
             }
-
-            velocity.x = speed;
         }
     }
 }
