@@ -60,7 +60,7 @@ namespace Character
         /// <summary>
         /// Updates the animation of the Character.
         /// </summary>
-        public virtual void UpdateAnimation(Vector2 velocity, State state, float walkingSpeed)
+        public virtual void UpdateAnimation(Vector2 velocity, State state)
         {
             // Check velocity and determine which direction the character is facing.
             if (velocity.x > 0)
@@ -74,7 +74,7 @@ namespace Character
             // else: we stopped moving so no flip needed
 
             // Check if we are running or walking
-            if (velocity.x > walkingSpeed)
+            if (state == State.Running)
             {
                 Run();
             }
