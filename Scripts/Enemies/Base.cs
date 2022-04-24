@@ -9,7 +9,8 @@ namespace Enemy
         public override void _Ready()
         {
             // Start towards the player
-            Speed = -25;
+            speed = 25;
+            velocity.x = -speed;
         }
 
         protected override void PhysicsProcess(float delta)
