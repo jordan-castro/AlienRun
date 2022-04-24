@@ -8,7 +8,7 @@ namespace Player
     {
         public override void _Ready()
         {
-            speed = 100;
+            Speed = 100;
         }
 
         protected override void PhysicsProcess(float delta)
@@ -17,11 +17,11 @@ namespace Player
             // Handle user input            
             if (Input.IsActionPressed("ui_right"))
             {
-                velocity.x = speed;
+                velocity.x = Speed;
             }
             else if (Input.IsActionPressed("ui_left"))
             {
-                velocity.x = -speed;
+                velocity.x = -Speed;
             }
             else 
             {
