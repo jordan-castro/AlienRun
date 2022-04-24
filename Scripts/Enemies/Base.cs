@@ -8,7 +8,7 @@ namespace Enemy
     {
         public override void _Ready()
         {
-            speed = 100;
+            speed = 75;
             // Randomly choose a direction to move in
             Random rand = new Random();
             if (rand.Next(2) == 0)
@@ -27,7 +27,7 @@ namespace Enemy
                 speed = -speed;
             }
 
-            MoveH(speed, delta);
+            velocity.x = speed;
         }
     }
 }
