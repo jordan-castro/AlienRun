@@ -9,7 +9,8 @@ namespace Character
 {
     public enum State
     {
-        OnGround,
+        Idle,
+        Walking,
         InAir,
         Running,
     }
@@ -17,6 +18,11 @@ namespace Character
     public class Node : KinematicBody2D
     {
         int health = 100;
+
+        /// <summary>
+        /// This is the initial speed of the Character. This should only ever be set once.
+        /// </summary>
+        protected float speed;
 
         public int JumpForce { get; set; } = -200;
 
@@ -46,8 +52,6 @@ namespace Character
                 }
             }
         }
-
-        public float Speed { get; set; }
 
         protected Animation sprite;
 
@@ -100,7 +104,19 @@ namespace Character
             // If the character is on the ground, set the state to OnGround.
             if (IsOnFloor())
             {
-                this.State = State.OnGround;
+                // Check if walking or running
+                if (Math.Abs(velocity.x) > speed)
+                {
+                    this.State = State.Running;
+                }
+                else if (velocity.x != 0)
+                {
+                    this.State = State.Walking;
+                }
+                else
+                {
+                    this.State = State.Idle;
+                }
             }
             // If the character is not on the ground, set the state to InAir.
             else
@@ -130,8 +146,8 @@ namespace Character
         /// </summary>   
         protected virtual void Jump()
         {
-            // If player state = OnGround, set canJump to true.
-            if (this.State == State.OnGround)
+            // If player state is on ground, then we can jump!
+            if (this.State == State.Walking || this.State == State.Running || this.State == State.Idle)
             {
                 canJump = true;
             }
