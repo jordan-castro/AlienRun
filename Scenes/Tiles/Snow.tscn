@@ -196,7 +196,9 @@ points = PoolVector2Array( 0, 0, 18, 0, 18, 18, 0, 18 )
 } ]
 7/z_index = 0
 
-[node name="TileMap" type="TileMap"]
+[node name="Snow" type="TileMap"]
 tile_set = SubResource( 9 )
 cell_size = Vector2( 18, 18 )
+collision_layer = 4
+collision_mask = 3
 format = 1

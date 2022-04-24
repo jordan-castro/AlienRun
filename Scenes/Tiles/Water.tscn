@@ -130,7 +130,9 @@
 8/shapes = [  ]
 8/z_index = 0
 
-[node name="TileMap" type="TileMap"]
+[node name="Water" type="TileMap"]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 18, 18 )
+collision_layer = 4
+collision_mask = 3
 format = 1
