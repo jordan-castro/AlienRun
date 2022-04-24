@@ -1,8 +1,10 @@
 using System;
 
-namespace Utils;
-
-public class Globals
+namespace Utils
 {
-    public static float Gravity { get; } = 400f; 
+
+    public class Globals
+    {
+        public static float Gravity { get; } = 400f;
+    }
 }
