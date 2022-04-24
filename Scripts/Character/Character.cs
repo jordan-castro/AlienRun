@@ -10,17 +10,20 @@ namespace Character
     public enum State
     {
         OnGround,
-        InAir
+        InAir,
+        Running,
     }
 
     public class Node : KinematicBody2D
     {
-        public int jumpForce = 200;
+        int health = 100;
+
+        public int JumpForce { get; set; } = -200;
 
         /// <summary>
         /// Can the character currently jump?
         /// </summary>
-        public bool canJump = false;
+        protected bool canJump = false;
 
         /// <summary>
         /// The current state of the character.
@@ -29,13 +32,22 @@ namespace Character
 
         public Vector2 velocity = new Vector2();
 
-        public int attackPower = 10;
+        public int AttackPower { get; set; } = 10;
 
-        public int health = 100;
+        public int Health
+        {
+            get => health;
+            set
+            {
+                health = value;
+                if (health <= 0)
+                {
+                    Die();
+                }
+            }
+        }
 
-        public float speed;
-
-        public bool IsDead { get { return health <= 0; } }
+        public float Speed { get; set; }
 
         protected Animation sprite;
 
@@ -48,7 +60,8 @@ namespace Character
             LoadSprite();
             CheckCharacterState();
             ApplyGravity(delta);
-            Move(delta);
+
+            MoveAndSlide(velocity, Vector2.Up);
         }
 
         public override void _PhysicsProcess(float delta)
@@ -59,7 +72,7 @@ namespace Character
             // Apply animation to the Character
             if (sprite != null)
             {
-                sprite.UpdateAnimation(velocity, State, speed);
+                sprite.UpdateAnimation(velocity, State);
             }
         }
 
@@ -96,11 +109,6 @@ namespace Character
             }
         }
 
-        private void Move(float delta)
-        {
-            MoveAndSlide(velocity, Vector2.Up);
-        }
-
         /// <summary>
         /// This gets called when the Character dies.
         /// </summary>
@@ -118,26 +126,6 @@ namespace Character
         }
 
         /// <summary>
-        ///     Attack another character.
-        /// </summary>
-        /// <param name="target">The character to attack.</param>
-        /// <param name="damageToGive">The amount of damage to give to the character, if null, the attackPower is used.</param>
-        public void Attack(Character.Node target, int? damageToGive)
-        {
-            if (damageToGive == null)
-            {
-                damageToGive = attackPower;
-            }
-            target.health -= damageToGive.Value;
-            // Check if the target is dead.
-            if (target.IsDead)
-            {
-                // Run the Die code
-                target.Die();
-            }
-        }
-
-        /// <summary>
         /// Jump the Player. This should be overriden by classes that want a more impressive jump.
         /// </summary>   
         protected virtual void Jump()
@@ -150,7 +138,7 @@ namespace Character
 
             if (canJump)
             {
-                velocity.y = -jumpForce;
+                velocity.y = JumpForce;
                 canJump = false;
             }
         }
@@ -158,7 +146,7 @@ namespace Character
         // Sprite takes a moment to load, so we load it once the game starts and the player is spawned.
         private void LoadSprite()
         {
-            if (sprite == null) 
+            if (sprite == null)
             {
                 sprite = GetNode<Animation>("Animation");
             }
