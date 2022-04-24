@@ -110,7 +110,7 @@ namespace Character
             Rotate(180);
 
             // Remove the CollisionShape
-            RemoveChild(GetNode<CollisionShape2D>("CollisionShape2D"));
+            RemoveChild(GetNode<CollisionShape2D>("Collision"));
 
             // Wait a second and then QueueFree the Character.
             await System.Threading.Tasks.Task.Delay(1000);
