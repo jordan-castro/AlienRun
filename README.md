@@ -9,3 +9,7 @@ Built using [GodotEngine](https://godotengine.org/).
 
 ## Tests
 Tests are written in [gdscript](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html).
+
+## TODO
+* Add more enemies
+* When attacked, the player should have a moment of invincibility.
