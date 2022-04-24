@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using Character;
 
 namespace Player
 {

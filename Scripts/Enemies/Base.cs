@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using Character;
 
 namespace Enemy
 {
@@ -23,5 +22,27 @@ namespace Enemy
                 velocity.x = -velocity.x;
             }
         }
+
+        // /// <summary>
+        // /// Handle collisions.
+        // /// </summary>
+        // protected override void HandleCollision(Godot.Object collider)
+        // {
+        //     // Check if collider is player
+        //     if (collider is Player.Base) 
+        //     {
+        //         Player.Base player = collider as Player.Base;
+        //         // Damage the player if they touched the enemy to the side or from the bottom
+        //         if (IsOnFloor() && IsOnWall() && !IsOnCeiling())
+        //         {
+        //             player.Health -= AttackPower;
+        //         }
+        //         else if (IsOnCeiling()) 
+        //         {
+        //             // This means the player has stomped on the enemy
+        //             Health -= player.AttackPower;
+        //         }
+        //     }
+        // }
     }
 }
