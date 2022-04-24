@@ -1,0 +1,4 @@
+# Naming conventions for the Character namespace.
+
+Sprite animator: "Animation"
+Collision object: "Collider"
