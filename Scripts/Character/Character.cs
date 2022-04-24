@@ -17,7 +17,7 @@ namespace Character
 
     public class Node : KinematicBody2D
     {
-        int health = 100;
+        private int health = 100;
 
         /// <summary>
         /// This is the initial speed of the Character. This should only ever be set once.
@@ -134,7 +134,7 @@ namespace Character
             Rotate(180);
 
             // Remove the CollisionShape
-            RemoveChild(GetNode<CollisionShape2D>("Collision"));
+            RemoveChild(GetNode<CollisionShape2D>("Collider"));
 
             // Wait a second and then QueueFree the Character.
             await System.Threading.Tasks.Task.Delay(1000);
@@ -159,12 +159,29 @@ namespace Character
             }
         }
 
+        /// <summary>
+        /// Handle a collision
+        /// </summary>
+        protected virtual void HandleCollision(Godot.Object collider) { }
+
         // Sprite takes a moment to load, so we load it once the game starts and the player is spawned.
         private void LoadSprite()
         {
             if (sprite == null)
             {
                 sprite = GetNode<Animation>("Animation");
+            }
+        }
+
+                // Checking for collisions
+        private void CheckForCollisions()
+        {
+            // Grab the collisions based on the MoveAndSlide
+            int collisions = GetSlideCount();
+            for (int i = 0; i < collisions; i++)
+            {
+                KinematicCollision2D collision = GetSlideCollision(i);
+                HandleCollision(collision.Collider);
             }
         }
     }

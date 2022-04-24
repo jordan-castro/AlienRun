@@ -6,7 +6,7 @@ namespace Player
 {
     public class Base : Character.Node
     {
-        float Speed {
+        protected float Speed {
             get {
                 if (Input.IsActionPressed("ui_sprint"))
                 {

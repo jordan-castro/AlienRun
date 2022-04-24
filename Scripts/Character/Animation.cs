@@ -6,13 +6,13 @@ namespace Character
     public class Animation : AnimatedSprite
     {
         // The animations that are available to the character.
-        string idle = "Idle";
-        string jump = "Jump";
-        string walk = "Walk";
-        string run = "Run";
-        string attack = "Attack";
+        private string idle = "Idle";
+        private string jump = "Jump";
+        private string walk = "Walk";
+        private string run = "Run";
+        private string attack = "Attack";
 
-        int GetNextFrame(string ani)
+        private int GetNextFrame(string ani)
         {
             if (Animation == ani)
             {
