@@ -25,6 +25,7 @@ tile_data = PoolIntArray( 655386, 4, 0, 655387, 6, 0, 655388, 8, 0, 655390, 4, 0
 
 [node name="Beetle" parent="." instance=ExtResource( 5 )]
 position = Vector2( 569, 293 )
+scale = Vector2( 1, 1.00296 )
 
 [node name="Needle" parent="." instance=ExtResource( 6 )]
 position = Vector2( 419, 280 )
