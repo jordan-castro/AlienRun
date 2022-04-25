@@ -1,0 +1,4 @@
+# Naming conventions for the Enemy namespace.
+
+RayCast2D
+    Top: TopCast
