@@ -5,11 +5,18 @@ namespace Enemy
 {
     public class Base : Character.Node
     {
+        private RayCast2D topCast;
+
+        public bool Stompable { get; protected set; } = true;
+
         public override void _Ready()
         {
             // Start towards the player
             speed = 25;
             velocity.x = -speed;
+
+            // Setup topCast
+            topCast = GetNode<RayCast2D>("TopCast");
         }
 
         protected override void PhysicsProcess(float delta)
@@ -23,26 +30,21 @@ namespace Enemy
             }
         }
 
-        // /// <summary>
-        // /// Handle collisions.
-        // /// </summary>
-        // protected override void HandleCollision(Godot.Object collider)
-        // {
-        //     // Check if collider is player
-        //     if (collider is Player.Base) 
-        //     {
-        //         Player.Base player = collider as Player.Base;
-        //         // Damage the player if they touched the enemy to the side or from the bottom
-        //         if (IsOnFloor() && IsOnWall() && !IsOnCeiling())
-        //         {
-        //             player.Health -= AttackPower;
-        //         }
-        //         else if (IsOnCeiling()) 
-        //         {
-        //             // This means the player has stomped on the enemy
-        //             Health -= player.AttackPower;
-        //         }
-        //     }
-        // }
+        /// <summary>
+        /// Check if the enemy has an Character.Node on top of it.
+        /// </summary>
+        public bool CharacterIsOnTop()
+        {
+            // Check cast
+            if (topCast.IsColliding())
+            {
+                // Check collider
+                if (topCast.GetCollider() is Character.Node)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
