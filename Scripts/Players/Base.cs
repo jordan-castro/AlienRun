@@ -9,16 +9,16 @@ namespace Player
             get {
                 if (Input.IsActionPressed("ui_sprint"))
                 {
-                    return speed + 50;
+                    return walkingSpeed + 50;
                 }
 
-                return speed;
+                return walkingSpeed;
             }
         }
 
         public override void _Ready()
         {
-            speed = 100;
+            walkingSpeed = 100;
         }
 
         protected override void PhysicsProcess(float delta)

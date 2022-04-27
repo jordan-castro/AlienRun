@@ -16,12 +16,12 @@ namespace Character
 
     public class Node : KinematicBody2D
     {
-        private int health = 100;
+        private int health = 1;
 
         /// <summary>
-        /// This is the initial speed of the Character. This should only ever be set once.
+        /// The characters walking speed.
         /// </summary>
-        protected float speed;
+        protected float walkingSpeed;
 
         public int JumpForce { get; set; } = -200;
 
@@ -36,8 +36,6 @@ namespace Character
         public State State { get; private set; }
 
         public Vector2 velocity = new Vector2();
-
-        public int AttackPower { get; set; } = 10;
 
         public int Health
         {
@@ -105,7 +103,7 @@ namespace Character
             if (IsOnFloor())
             {
                 // Check if walking or running
-                if (Math.Abs(velocity.x) > speed)
+                if (Math.Abs(velocity.x) > walkingSpeed)
                 {
                     this.State = State.Running;
                 }
