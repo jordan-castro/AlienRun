@@ -29,7 +29,7 @@ namespace Observers
 				// Remove all the observers that should be removed
 				foreach (Observer observer in toRemove)
 				{
-					observers.Remove(observer);
+					RemoveObserver(observer);
 				}
 			}
 
