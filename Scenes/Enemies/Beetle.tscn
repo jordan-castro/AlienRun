@@ -48,4 +48,4 @@ shape = SubResource( 2 )
 [node name="TopCast" type="RayCast2D" parent="."]
 rotation = -3.14159
 enabled = true
-cast_to = Vector2( 0, 9 )
+cast_to = Vector2( 0, 11 )
