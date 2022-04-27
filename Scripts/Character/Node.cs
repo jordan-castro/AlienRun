@@ -63,6 +63,7 @@ namespace Character
             CheckCharacterState();
             ApplyGravity(delta);
 
+            // TODO: only move if the character is alive.
             MoveAndSlide(velocity, Vector2.Up);
         }
 
