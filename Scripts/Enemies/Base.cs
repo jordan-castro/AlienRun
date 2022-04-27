@@ -12,8 +12,8 @@ namespace Enemy
         public override void _Ready()
         {
             // Start towards the player
-            speed = 25;
-            velocity.x = -speed;
+            walkingSpeed = 25;
+            velocity.x = -walkingSpeed;
 
             // Setup topCast
             topCast = GetNode<RayCast2D>("TopCast");
@@ -23,27 +23,45 @@ namespace Enemy
         {
             base.PhysicsProcess(delta);
 
-            // Check if the enemy is on a wall
-            if (IsOnWall())
+            // Check if the enemy is on a wall and the wall is not a plauer.
+            if (IsOnWall() && !IsOnPlayer())
             {
                 velocity.x = -velocity.x;
             }
         }
 
         /// <summary>
-        /// Check if the enemy has an Character.Node on top of it.
+        /// Check if the enemy has an Player.Base on top of it.
         /// </summary>
-        public bool CharacterIsOnTop()
+        public bool PlayerIsOnTop()
         {
             // Check cast
             if (topCast.IsColliding())
             {
                 // Check collider
-                if (topCast.GetCollider() is Character.Node)
+                if (topCast.GetCollider() is Player.Base)
                 {
                     return true;
                 }
             }
+            return false;
+        }
+
+        // Check if colliding with player
+        private bool IsOnPlayer()
+        {
+            // Don't even bother if the count is 0
+            if (GetSlideCount() > 0)
+            {
+                for (int i = 0; i < GetSlideCount(); i++)
+                {
+                    if (GetSlideCollision(i).Collider is Player.Base)
+                    {
+                        return true;
+                    }
+                }
+            }
+
             return false;
         }
     }
