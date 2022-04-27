@@ -8,22 +8,28 @@ namespace Observers
 	{
 		public class Subject : ISubject
 		{
-			private List<Collision.Observer> observers = new List<Collision.Observer>();
+			private List<Observer> observers = new List<Observer>();
 
 			public void NotifyObservers()
 			{
+				// List that might need to be cleared
+				List<Observer> toRemove = new List<Observer>();
 				foreach (Observer observer in observers)
 				{
-					// Should we remove this observer?
 					if (observer.ShouldRemove())
 					{
-						GD.Print("Removing observer");
-						RemoveObserver(observer);
+						toRemove.Add(observer);
 					}
 					else
 					{
 						observer.Update(null);
 					}
+				}
+
+				// Remove all the observers that should be removed
+				foreach (Observer observer in toRemove)
+				{
+					observers.Remove(observer);
 				}
 			}
 

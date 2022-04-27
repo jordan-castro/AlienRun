@@ -159,11 +159,6 @@ namespace Character
             }
         }
 
-        /// <summary>
-        /// Handle a collision
-        /// </summary>
-        protected virtual void HandleCollision(Godot.Object collider) { }
-
         // Sprite takes a moment to load, so we load it once the game starts and the player is spawned.
         private void LoadSprite()
         {
