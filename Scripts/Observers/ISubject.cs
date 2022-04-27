@@ -1,4 +1,4 @@
-namespace Observer
+namespace Observers
 {
     public interface ISubject
     {

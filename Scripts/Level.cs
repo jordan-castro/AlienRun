@@ -1,26 +1,27 @@
 using Godot;
 using System;
-using Observer.Collision;
+using Observers.Collision;
 
 namespace Level
 {
     public class Level : Node2D
     {
-        private Subject collision;
+        public Subject collision;
 
         public override void _Ready()
         {
-            // Setup the collision
+            // Setup the collision "model"
             collision = new Subject();
             var children = GetChildren();
 
             foreach (Node2D child in children)
             {
+                // Only charactes are added to the collision model
                 if (child is Character.Node)
                 {
-                    GD.Print("Child is: " + child.Name);
+                    GD.Print("Child is: " + child.Name); // TODO: Remove this before production
 
-                    Observer.Collision.Observer observer = new Observer.Collision.Observer(child as Character.Node, collision);
+                    Observer observer = new Observer(child as Character.Node, collision);
                 }
             }
         }
