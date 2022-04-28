@@ -13,4 +13,3 @@ Tests are written in [gdscript](https://docs.godotengine.org/en/stable/tutorials
 ## TODO
 * Add more enemies
 * When attacked, the player should have a moment of invincibility.
-* Player/Enemy can not move after dying.

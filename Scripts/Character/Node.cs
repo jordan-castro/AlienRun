@@ -43,7 +43,7 @@ namespace Character
             set
             {
                 health = value;
-                GD.Print(Name + "'s Health: " + health);
+                GD.Print(Name + "'s Health: " + health); // TODO: remove this before production.
                 if (health <= 0)
                 {
                     Die();
@@ -62,8 +62,12 @@ namespace Character
             LoadSprite();
             CheckCharacterState();
             ApplyGravity(delta);
-
-            // TODO: only move if the character is alive.
+            
+            // Do not move if we are dead.
+            if (Health <= 0) {
+                velocity.x = 0;
+            }
+            // We can however, fall.
             MoveAndSlide(velocity, Vector2.Up);
         }
 
@@ -72,8 +76,8 @@ namespace Character
             base._PhysicsProcess(delta);
             PhysicsProcess(delta);
 
-            // Apply animation to the Character
-            if (sprite != null)
+            // Apply animation to the Character if alive.
+            if (sprite != null && Health > 0)
             {
                 sprite.UpdateAnimation(velocity, State);
             }
