@@ -44,9 +44,28 @@ namespace Observers
                 else if (character is Player.Base)
                 {
                     CollidePlayerWithEnemy(character, this.character);
+                } else if (character is Enemy.Base && this.character is Enemy.Base)
+                {
+                    CollideEnemyWithEnemy(this.character, character);
                 }
             }
 
+            // Fires when an enemy has collided with a enemy.
+            private void CollideEnemyWithEnemy(Character.Node ch1, Character.Node ch2)
+            {
+                Enemy.Base enemy1 = ch1 as Enemy.Base;
+                Enemy.Base enemy2 = ch2 as Enemy.Base;
+
+                // Check if both are Rollers
+                if (enemy1 is Enemy.Roller && enemy2 is Enemy.Roller)
+                {
+                    // Kill both
+                    enemy1.Health = 0;
+                    enemy2.Health = 0;
+                }
+            }
+            
+            // Fires when a player collides with an enemy.
             private void CollidePlayerWithEnemy(Character.Node ch1, Character.Node ch2)
             {
                 // Cast

@@ -172,6 +172,7 @@ namespace Character
         {
             if (sprite == null)
             {
+                // Check if "Animation" is a child of the Character.
                 sprite = GetNode<Animation>("Animation");
             }
         }
