@@ -62,6 +62,12 @@ namespace Observers
                 {
                     player.Health -= 1;
                     player.TakeDamage();
+
+                    // Jump player if necessary
+                    if (enemy.JumpPlayer)
+                    {
+                        player.Jump();
+                    }
                 }
             }
 

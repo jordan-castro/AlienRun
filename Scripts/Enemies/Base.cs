@@ -6,8 +6,15 @@ namespace Enemy
     public class Base : Character.Node
     {
         private RayCast2D topCast;
-
+        
+        /// <summary>
+        /// Can this enemy be stomped on?
+        /// </summary>
         public bool Stompable { get; protected set; } = true;
+        /// <summary>
+        /// When the player tries to stomp this enemy, should the player jump if Stompable is false?
+        /// </summary>
+        public bool JumpPlayer { get; protected set; } = false;
 
         public override void _Ready()
         {

@@ -9,6 +9,7 @@ namespace Enemy
         {
             base._Ready();
             Stompable = false;
+            JumpPlayer = true;
         }
     }
 }
