@@ -12,3 +12,5 @@ Tests are written in [gdscript](https://docs.godotengine.org/en/stable/tutorials
 
 ## TODO
 * Add more enemies
+* Add coins
+* Fix roller rolling.
