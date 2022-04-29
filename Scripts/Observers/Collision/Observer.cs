@@ -61,6 +61,7 @@ namespace Observers
                 else
                 {
                     player.Health -= 1;
+                    player.TakeDamage();
                 }
             }
 

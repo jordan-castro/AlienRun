@@ -1,12 +1,15 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 namespace Player
 {
     public class Base : Character.Node
     {
-        protected float Speed {
-            get {
+        protected float Speed
+        {
+            get
+            {
                 if (Input.IsActionPressed("ui_sprint"))
                 {
                     return walkingSpeed + 50;
@@ -19,6 +22,7 @@ namespace Player
         public override void _Ready()
         {
             walkingSpeed = 100;
+            Health = 2;
         }
 
         protected override void PhysicsProcess(float delta)
@@ -45,6 +49,39 @@ namespace Player
             if (Input.IsActionPressed("ui_down"))
             {
                 // TODO: Slide
+            }
+        }
+
+        /// <summary>
+        /// When the player takes damage.
+        /// </summary>
+        public async void TakeDamage()
+        {
+            // Only if alive.
+            if (Health > 0)
+            {
+                // Change collision settings.
+                SetCollisionLayerBit(0, false);
+                SetCollisionMaskBit(1, false);
+
+                // Wait for 2 seconds
+                await Blink();
+                // Change collision settings back to normal.
+                SetCollisionLayerBit(0, true);
+                SetCollisionMaskBit(1, true);
+            }
+        }
+
+        private async Task Blink()
+        {
+            int amount = 0;
+            while (amount < 20)
+            {
+                // Wait for a third of a second
+                await Task.Delay(150);
+                // Toggle visibility
+                Visible = !Visible;
+                amount++;
             }
         }
     }
