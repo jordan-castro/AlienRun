@@ -1,11 +1,12 @@
 using Godot;
 using System;
 
-/// <summary>
-/// Base class for most movable entities in the game.
-/// </summary>
 namespace Character
 {
+
+    /// <summary>
+    /// Possible states of the character.
+    /// </summary>
     public enum State
     {
         Idle,
@@ -14,6 +15,9 @@ namespace Character
         Running,
     }
 
+    /// <summary>
+    /// Base class for most movable entities in the game.
+    /// </summary>
     public class Node : KinematicBody2D
     {
         private int health = 1;
@@ -62,9 +66,10 @@ namespace Character
             LoadSprite();
             CheckCharacterState();
             ApplyGravity(delta);
-            
+
             // Do not move if we are dead.
-            if (Health <= 0) {
+            if (Health <= 0)
+            {
                 velocity.x = 0;
             }
             // We can however, fall.

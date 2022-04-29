@@ -2,7 +2,7 @@ using Godot;
 using System;
 using Observers.Collision;
 
-namespace Level
+namespace AlienRun
 {
     public class Level : Node2D
     {
