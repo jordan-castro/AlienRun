@@ -1,7 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Enemies/Roller.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Enemies/character_0008.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Character/Animation.cs" type="Script" id=3]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 5.0
+} ]
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -11,8 +20,10 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+[node name="Animation" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "Walk"
+script = ExtResource( 3 )
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )

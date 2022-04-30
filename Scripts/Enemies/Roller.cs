@@ -10,20 +10,26 @@ namespace Enemy
         {
             base._Ready();
             Stompable = false;
-            JumpPlayer = true;
         }
 
         protected override void PhysicsProcess(float delta)
         {
             base.PhysicsProcess(delta);
 
-            // Find out the direction.
-            int direction = 0; // 0 is stationary
-            // Check direction
+            // Decide direction to rotate in.
+            int direction = 0; // 0 stays stilll
 
+            if (velocity.x > 0)
+            {
+                direction = 1; // Go right
+            }
+            else if (velocity.x < 0)
+            {
+                direction = -1; // Go left
+            }
 
             // Apply rotation
-            GetNode<Sprite>("Sprite").Rotate(direction * walkingSpeed);
+            sprite.Rotate((5 * direction) * delta);
         }
     }
 }
