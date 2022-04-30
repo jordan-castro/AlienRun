@@ -44,7 +44,8 @@ namespace Observers
                 else if (character is Player.Base)
                 {
                     CollidePlayerWithEnemy(character, this.character);
-                } else if (character is Enemy.Base && this.character is Enemy.Base)
+                }
+                else if (character is Enemy.Base && this.character is Enemy.Base)
                 {
                     CollideEnemyWithEnemy(this.character, character);
                 }
@@ -64,7 +65,7 @@ namespace Observers
                     enemy2.Health = 0;
                 }
             }
-            
+
             // Fires when a player collides with an enemy.
             private void CollidePlayerWithEnemy(Character.Node ch1, Character.Node ch2)
             {
@@ -80,10 +81,10 @@ namespace Observers
                 else
                 {
                     player.Health -= 1;
-                    player.TakeDamage();
+                    player.TakeDamage(enemy.PlayerIsOnTop());
 
-                    // Jump player if necessary
-                    if (enemy.JumpPlayer)
+                    // Check that player is on top again to jump if jump is set.
+                    if (enemy.PlayerIsOnTop() && enemy.JumpPlayer)
                     {
                         player.Jump();
                     }

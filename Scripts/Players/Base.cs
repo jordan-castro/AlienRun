@@ -55,11 +55,17 @@ namespace Player
         /// <summary>
         /// When the player takes damage.
         /// </summary>
-        public async void TakeDamage()
+        /// <param name="isOnTop"> Is the player on top of the enemy? </param>
+        public async void TakeDamage(bool isOnTop)
         {
             // Only if alive.
             if (Health > 0)
             {
+                if (isOnTop)
+                {
+                    canJump = true;
+                }
+
                 // Change collision settings.
                 SetCollisionLayerBit(0, false);
                 SetCollisionMaskBit(1, false);
