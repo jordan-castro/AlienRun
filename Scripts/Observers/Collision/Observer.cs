@@ -75,14 +75,13 @@ namespace Observers
                 Player.Base player = ch1 as Player.Base;
                 Enemy.Base enemy = ch2 as Enemy.Base;
 
-                // If the enemy is on the ceiling this means the player has stomped on the enemy
+                // Did the player just stomp the enemy?
                 if (enemy.PlayerIsOnTop() && enemy.Stompable)
                 {
                     enemy.Health -= 1;
                 }
                 else
                 {
-                    GD.Print("Character.Node: " + ch1.Name + " collided with " + ch2.Name);
                     player.Health -= 1;
                     player.TakeDamage(enemy.PlayerIsOnTop());
 

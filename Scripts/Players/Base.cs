@@ -65,7 +65,6 @@ namespace Player
                 {
                     canJump = true;
                 }
-
                 // Change collision settings.
                 SetCollisionLayerBit(0, false);
                 SetCollisionMaskBit(1, false);

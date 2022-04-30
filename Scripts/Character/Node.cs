@@ -48,7 +48,7 @@ namespace Character
             {
                 health = value;
                 GD.Print(Name + "'s Health: " + health); // TODO: remove this before production.
-                if (health <= 0)
+                if (health < 0)
                 {
                     Die();
                 }

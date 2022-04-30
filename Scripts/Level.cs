@@ -21,10 +21,10 @@ namespace AlienRun
                 // Check if Character.Node
                 if (child is Character.Node)
                 {
-                    // The Player does not need to worry about this.
-                    if (child is not Player.Base)
+                    CollisionSetup(child as Character.Node);
+                    // Player does not worry about being off the screen
+                    if (!(child is Player.Base))
                     {
-                        CollisionSetup(child as Character.Node);
                         OffScreenSetup(child as Character.Node);
                     }
                 }

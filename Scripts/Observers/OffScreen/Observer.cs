@@ -19,18 +19,16 @@ namespace Observers
 
             public void Update(object data)
             {
-                // Check if the character is dead
-                if (!character.IsAlive) 
-                {
-                    // Grab bottom from data
-                    int bottom = (int)data;
+                // Grab bottom from data
+                int bottom = (int)data;
 
-                    if (character.Position.y > bottom)
-                    {
-                        character.QueueFree();
-                        // We should remove from the subject list
-                        ShouldRemove = true;
-                    }
+                if (character.Position.y > bottom)
+                {
+                    // Slaughter the character.
+                    character.Health = -1;
+                    character.QueueFree();
+                    // We should remove from the subject list
+                    ShouldRemove = true;
                 }
             }
         }

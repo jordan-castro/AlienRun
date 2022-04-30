@@ -14,4 +14,3 @@ Tests are written in [gdscript](https://docs.godotengine.org/en/stable/tutorials
 * Add more enemies
 * Add coins
 * Fix player-enemy collision
-* Add observer for off screen objects that are destroyed.
