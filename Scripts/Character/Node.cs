@@ -136,17 +136,13 @@ namespace Character
         /// <summary>
         /// This gets called when the Character dies.
         /// </summary>
-        protected virtual async void Die()
+        protected virtual void Die()
         {
             // Rotate the character
             Rotate(180);
 
             // Remove the CollisionShape
             RemoveChild(GetNode<CollisionShape2D>("Collider"));
-
-            // Wait a second and then QueueFree the Character.
-            await System.Threading.Tasks.Task.Delay(1000);
-            QueueFree();
         }
 
         /// <summary>
