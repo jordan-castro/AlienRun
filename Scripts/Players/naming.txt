@@ -1,0 +1,4 @@
+# Naming conventions for the Player scenes.
+
+KinematicBody2D: "Player"
+Camera2D: "Camera"
