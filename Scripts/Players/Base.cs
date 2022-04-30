@@ -70,6 +70,8 @@ namespace Player
                 SetCollisionLayerBit(0, false);
                 SetCollisionMaskBit(1, false);
 
+                GD.Print("Before blinking");
+
                 // Wait for 2 seconds
                 await Blink();
                 // Change collision settings back to normal.

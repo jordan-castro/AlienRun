@@ -20,15 +20,13 @@ namespace Observers
             public void Update(object data)
             {
                 // Check if the character is dead
-                if (character.Health <= 0) 
+                if (!character.IsAlive) 
                 {
                     // Grab bottom from data
                     int bottom = (int)data;
 
                     if (character.Position.y > bottom)
                     {
-                        // Kill and remove from scene
-                        character.Health = 0;
                         character.QueueFree();
                         // We should remove from the subject list
                         ShouldRemove = true;

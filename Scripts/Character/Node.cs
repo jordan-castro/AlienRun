@@ -55,6 +55,11 @@ namespace Character
             }
         }
 
+        /// <summary>
+        /// Check if the character is alive.
+        /// </summary>
+        public bool IsAlive => Health >= 0;
+
         protected Animation sprite;
 
         /// <summary>
@@ -68,7 +73,7 @@ namespace Character
             ApplyGravity(delta);
 
             // Do not move if we are dead.
-            if (Health <= 0)
+            if (!IsAlive)
             {
                 velocity.x = 0;
             }

@@ -16,7 +16,7 @@ namespace Observers
                 subject.RegisterObserver(this);
             }
 
-            public bool ShouldRemove { get => character.Health <= 0; set => throw new NotImplementedException(); }
+            public bool ShouldRemove { get => !character.IsAlive; set => throw new NotImplementedException(); }
 
             public void Update(object data)
             {
@@ -42,6 +42,10 @@ namespace Observers
                 if (character is Player.Base)
                 {
                     CollidePlayerWithEnemy(character, this.character);
+                }
+                else if (this.character is Player.Base)
+                {
+                    CollidePlayerWithEnemy(this.character, character);
                 }
                 else if (character is Enemy.Base && this.character is Enemy.Base)
                 {
@@ -78,6 +82,7 @@ namespace Observers
                 }
                 else
                 {
+                    GD.Print("Character.Node: " + ch1.Name + " collided with " + ch2.Name);
                     player.Health -= 1;
                     player.TakeDamage(enemy.PlayerIsOnTop());
 
