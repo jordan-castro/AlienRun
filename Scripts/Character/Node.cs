@@ -150,11 +150,11 @@ namespace Character
         }
 
         /// <summary>
-        /// Jump the Player. This should be overriden by classes that want a more impressive jump.
+        /// Jump the Character. This should be overriden by classes that want a more impressive jump.
         /// </summary>   
         public virtual void Jump()
         {
-            // If player state is on ground, then we can jump!
+            // If character state is on ground, then we can jump!
             if (this.State == State.Walking || this.State == State.Running || this.State == State.Idle)
             {
                 canJump = true;
