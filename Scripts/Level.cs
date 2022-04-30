@@ -1,27 +1,32 @@
 using Godot;
 using System;
-using Observers.Collision;
+using Observers;
 
 namespace AlienRun
 {
     public class Level : Node2D
     {
-        public Subject collision;
+        public Observers.Collision.Subject collision;
+        public Observers.OffScreen.Subject offScreen;
 
         public override void _Ready()
         {
-            // Setup the collision "model"
-            collision = new Subject();
             var children = GetChildren();
+
+            collision = new Observers.Collision.Subject();
+            offScreen = new Observers.OffScreen.Subject(500);
 
             foreach (Node2D child in children)
             {
-                // Only charactes are added to the collision model
+                // Check if Character.Node
                 if (child is Character.Node)
                 {
-                    GD.Print("Child is: " + child.Name); // TODO: Remove this before production
-
-                    Observer observer = new Observer(child as Character.Node, collision);
+                    // The Player does not need to worry about this.
+                    if (child is not Player.Base)
+                    {
+                        CollisionSetup(child as Character.Node);
+                        OffScreenSetup(child as Character.Node);
+                    }
                 }
             }
         }
@@ -29,6 +34,19 @@ namespace AlienRun
         public override void _Process(float delta)
         {
             collision.NotifyObservers();
+            offScreen.NotifyObservers();
+        }
+
+        private void CollisionSetup(Character.Node child)
+        {
+            GD.Print("Child is: " + child.Name); // TODO: Remove this before production
+
+            var observer = new Observers.Collision.Observer(child as Character.Node, collision);
+        }
+
+        private void OffScreenSetup(Character.Node child)
+        {
+            var observer = new Observers.OffScreen.Observer(child, offScreen);
         }
     }
 }

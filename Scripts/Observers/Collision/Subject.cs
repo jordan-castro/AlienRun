@@ -16,7 +16,7 @@ namespace Observers
 				List<Observer> toRemove = new List<Observer>();
 				foreach (Observer observer in observers)
 				{
-					if (observer.ShouldRemove())
+					if (observer.ShouldRemove)
 					{
 						toRemove.Add(observer);
 					}

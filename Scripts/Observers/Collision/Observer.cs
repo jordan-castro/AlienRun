@@ -16,6 +16,8 @@ namespace Observers
                 subject.RegisterObserver(this);
             }
 
+            public bool ShouldRemove { get => character.Health <= 0; set => throw new NotImplementedException(); }
+
             public void Update(object data)
             {
                 // Check for collisions
@@ -36,12 +38,8 @@ namespace Observers
 
             private void CollideCharacter(Character.Node character)
             {
-                // Check if one is a PLayer
-                if (this.character is Player.Base)
-                {
-                    CollidePlayerWithEnemy(this.character, character);
-                }
-                else if (character is Player.Base)
+                // Checking what type of collision we have
+                if (character is Player.Base)
                 {
                     CollidePlayerWithEnemy(character, this.character);
                 }
@@ -89,15 +87,6 @@ namespace Observers
                         player.Jump();
                     }
                 }
-            }
-
-            /// <summary>
-            /// Determines if the Observer should be removed from the Subject. 
-            /// If character health is <= 0, then it should be removed.
-            /// </summary>
-            public bool ShouldRemove()
-            {
-                return character.Health <= 0;
             }
         }
     }
