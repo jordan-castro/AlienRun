@@ -41,7 +41,7 @@ namespace Character
 
         public Vector2 velocity = new Vector2();
 
-        public int Health
+        public virtual int Health
         {
             get => health;
             set
@@ -146,8 +146,15 @@ namespace Character
             // Rotate the character
             Rotate(180);
 
-            // Remove the CollisionShape
-            RemoveChild(GetNode<CollisionShape2D>("Collider"));
+            try
+            {
+                // Remove the CollisionShape
+                RemoveChild(GetNode("Collider"));
+            }
+            catch (Exception e)
+            {
+                GD.Print(e.Message);
+            }
         }
 
         /// <summary>

@@ -8,6 +8,19 @@ namespace Player
     {
         public int Coins { get; set; } = 0;
 
+        private bool isBlinking = false;
+
+        public override int Health
+        {
+            get => base.Health; set
+            {
+                if (!isBlinking)
+                {
+                    base.Health = value;
+                }
+            }
+        }
+
         protected float Speed
         {
             get
@@ -61,7 +74,7 @@ namespace Player
         public async void TakeDamage(bool isOnTop)
         {
             // Only if alive.
-            if (Health > 0)
+            if (IsAlive)
             {
                 if (isOnTop)
                 {
@@ -71,20 +84,18 @@ namespace Player
                 SetCollisionLayerBit(0, false);
                 SetCollisionMaskBit(1, false);
 
-                GD.Print("Before blinking");
-
-                // Wait for 2 seconds
                 await Blink();
+
                 // Change collision settings back to normal.
                 SetCollisionLayerBit(0, true);
                 SetCollisionMaskBit(1, true);
-
-                GD.Print("Amount of coins: " + Coins);
             }
         }
 
         private async Task Blink()
         {
+            isBlinking = true;
+
             int amount = 0;
             while (amount < 20)
             {
@@ -94,6 +105,8 @@ namespace Player
                 Visible = !Visible;
                 amount++;
             }
+            
+            isBlinking = false;
         }
     }
 }

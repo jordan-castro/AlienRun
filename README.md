@@ -13,4 +13,3 @@ Tests are written in [gdscript](https://docs.godotengine.org/en/stable/tutorials
 ## TODO
 * Add more enemies
 * Add Coin SFX
-* Fix player-enemy collision
