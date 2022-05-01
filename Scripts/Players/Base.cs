@@ -6,6 +6,8 @@ namespace Player
 {
     public class Base : Character.Node
     {
+        public int Coins { get; set; } = 0;
+
         protected float Speed
         {
             get
@@ -76,6 +78,8 @@ namespace Player
                 // Change collision settings back to normal.
                 SetCollisionLayerBit(0, true);
                 SetCollisionMaskBit(1, true);
+
+                GD.Print("Amount of coins: " + Coins);
             }
         }
 
