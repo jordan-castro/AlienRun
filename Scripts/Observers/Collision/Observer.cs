@@ -63,8 +63,8 @@ namespace Observers
                 if (enemy1 is Enemy.Roller && enemy2 is Enemy.Roller)
                 {
                     // Kill both
-                    enemy1.Health = 0;
-                    enemy2.Health = 0;
+                    enemy1.Health = -1;
+                    enemy2.Health = -1;
                 }
             }
 
@@ -82,6 +82,17 @@ namespace Observers
                 }
                 else
                 {
+                    if (enemy is Enemy.BadBlock)
+                    {
+                        enemy.Jump();
+
+                        // So long as the player jumps before the block hits, the player is the one attacking.
+                        if (player.velocity.y < enemy.velocity.y)
+                        {
+                            enemy.Health = -1;
+                            return;
+                        }   
+                    }
                     player.Health -= 1;
                     player.TakeDamage(enemy.PlayerIsOnTop());
 
