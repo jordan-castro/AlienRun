@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Observers;
+using System.Collections.Generic;
 
 namespace AlienRun
 {
@@ -11,7 +12,7 @@ namespace AlienRun
 
         public override void _Ready()
         {
-            var children = GetChildren();
+            var children = GetNodes();
 
             collision = new Observers.Collision.Subject();
             offScreen = new Observers.OffScreen.Subject(500);
@@ -47,6 +48,23 @@ namespace AlienRun
         private void OffScreenSetup(Character.Node child)
         {
             var observer = new Observers.OffScreen.Observer(child, offScreen);
+        }
+    
+        // Get the player and enemies of the level
+        private List<Node2D> GetNodes()
+        {
+            var player = GetNode<Node2D>("Player");
+            var enemies = GetNode<Node2D>("Enemies").GetChildren();
+
+            var children = new List<Node2D> { player };
+
+            // Must add this way because of the way the compiler works
+            foreach (Node2D child in enemies)
+            {
+                children.Add(child);
+            }
+
+            return children;
         }
     }
 }
