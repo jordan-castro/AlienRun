@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Players/Default.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Tiles/Grass.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Scenes/Enemies/Needle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Level.cs" type="Script" id=7]
 [ext_resource path="res://Scenes/Enemies/Roller.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Enemies/BadBlock.tscn" type="PackedScene" id=10]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 7 )
@@ -24,15 +26,43 @@ tile_data = PoolIntArray( 720924, 4, 0, 720925, 6, 0, 720926, 8, 0, 786460, 5, 0
 [node name="Leaves" parent="Leaves" instance=ExtResource( 4 )]
 tile_data = PoolIntArray( 655386, 4, 0, 655387, 6, 0, 655388, 8, 0, 655390, 4, 0, 655391, 6, 0, 655392, 8, 0, 720922, 5, 0, 720923, 7, 0, 720924, 9, 0, 720926, 5, 0, 720927, 7, 0, 720928, 9, 0, 786458, 10, 0, 786459, 11, 0, 786460, 12, 0, 786462, 10, 0, 786463, 11, 0, 786464, 12, 0 )
 
-[node name="Beetle" parent="." instance=ExtResource( 5 )]
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 294, 256 )
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 311, 254 )
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 334, 253 )
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 312, 239 )
+
+[node name="Coin5" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 291, 238 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Roller" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 480, 159 )
+
+[node name="Beetle" parent="Enemies" instance=ExtResource( 5 )]
 position = Vector2( 569, 293 )
 scale = Vector2( 1, 1.00296 )
 
-[node name="Needle" parent="." instance=ExtResource( 6 )]
+[node name="Needle" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 419, 294 )
 
-[node name="Roller" parent="." instance=ExtResource( 8 )]
-position = Vector2( 480, 159 )
+[node name="BadBlock" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 266, 234 )
+
+[node name="BadBlock2" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 225, 232 )
+
+[node name="BadBlock3" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 246, 232 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 206, 291 )
