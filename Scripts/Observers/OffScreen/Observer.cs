@@ -24,8 +24,6 @@ namespace Observers
 
                 if (character.Position.y > bottom)
                 {
-                    // Slaughter the character.
-                    character.Health = -1;
                     character.QueueFree();
                     // We should remove from the subject list
                     ShouldRemove = true;

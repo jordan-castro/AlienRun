@@ -8,10 +8,12 @@ namespace Enemy
     {
         private RayCast2D bottomCast;
         private float oy;
+        private bool canFall = true;
 
         public override void _Ready()
         {
             base._Ready();
+            Stompable = false;
             bottomCast = GetNode<RayCast2D>("BottomCast");
             velocity.x = 0;
             oy = Position.y;
@@ -26,7 +28,7 @@ namespace Enemy
                 return;
             }
 
-            if (bottomCast.IsColliding())
+            if (bottomCast.IsColliding() && canFall)
             {
                 // Check if colliding node is a Player.Base
                 if (bottomCast.GetCollider() is Player.Base)
@@ -37,8 +39,13 @@ namespace Enemy
             }
             else if (oy < Position.y)
             {
+                canFall = false;
                 // Move back up to original position
                 MoveAndSlide(new Vector2(0, -walkingSpeed), Vector2.Up);
+            }
+            else
+            {
+                canFall = true;
             }
         }
     }

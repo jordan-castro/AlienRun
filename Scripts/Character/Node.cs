@@ -87,7 +87,7 @@ namespace Character
             PhysicsProcess(delta);
 
             // Apply animation to the Character if alive.
-            if (sprite != null && Health > 0)
+            if (sprite != null && IsAlive)
             {
                 sprite.UpdateAnimation(velocity, State);
             }

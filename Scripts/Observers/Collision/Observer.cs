@@ -16,7 +16,7 @@ namespace Observers
                 subject.RegisterObserver(this);
             }
 
-            public bool ShouldRemove { get => !character.IsAlive; set => throw new NotImplementedException(); }
+            public bool ShouldRemove { get => !Godot.Object.IsInstanceValid(character); set => throw new NotImplementedException(); }
 
             public void Update(object data)
             {
@@ -87,11 +87,11 @@ namespace Observers
                         enemy.Jump();
 
                         // So long as the player jumps before the block hits, the player is the one attacking.
-                        if (player.velocity.y < enemy.velocity.y)
+                        if (player.State == Character.State.InAir)
                         {
                             enemy.Health = -1;
                             return;
-                        }   
+                        }
                     }
                     player.Health -= 1;
                     player.TakeDamage(enemy.PlayerIsOnTop());
