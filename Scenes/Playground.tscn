@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Players/Default.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Tiles/Grass.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/Enemies/Roller.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Enemies/BadBlock.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Tiles/Cloud.tscn" type="PackedScene" id=11]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 7 )
@@ -46,7 +47,7 @@ position = Vector2( 291, 238 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Roller" parent="Enemies" instance=ExtResource( 8 )]
-position = Vector2( 480, 159 )
+position = Vector2( 571, 147 )
 
 [node name="Beetle" parent="Enemies" instance=ExtResource( 5 )]
 position = Vector2( 569, 293 )
@@ -56,13 +57,16 @@ scale = Vector2( 1, 1.00296 )
 position = Vector2( 419, 294 )
 
 [node name="BadBlock" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 266, 234 )
+position = Vector2( 287, 183 )
 
 [node name="BadBlock2" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 225, 232 )
+position = Vector2( 230, 184 )
 
 [node name="BadBlock3" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 246, 232 )
+position = Vector2( 255, 184 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 206, 291 )
+
+[node name="Clouds" parent="." instance=ExtResource( 11 )]
+tile_data = PoolIntArray( 393219, 0, 0, 393220, 1, 0, 393221, 2, 0, 524284, 0, 0, 524285, 1, 0, 524286, 2, 0, 720888, 0, 0, 720889, 1, 0, 720890, 2, 0, 720905, 0, 0, 720906, 1, 0, 720907, 2, 0, 851966, 0, 0, 851967, 1, 0, 786432, 2, 0, 917506, 0, 0, 917507, 1, 0, 917508, 2, 0 )

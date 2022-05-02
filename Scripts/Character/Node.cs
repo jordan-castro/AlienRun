@@ -27,7 +27,7 @@ namespace Character
         /// </summary>
         protected float walkingSpeed;
 
-        public int JumpForce { get; set; } = -200;
+        public int JumpForce { get; set; } = -225;
 
         /// <summary>
         /// Can the character currently jump?
@@ -37,7 +37,7 @@ namespace Character
         /// <summary>
         /// The current state of the character.
         /// </summary>
-        public State State { get; private set; }
+        public State State { get; protected set; }
 
         public Vector2 velocity = new Vector2();
 
@@ -109,9 +109,7 @@ namespace Character
             }
         }
 
-        /// <summary>
-        /// Checks what state the Character should be in.
-        /// </summary>
+        // Checks what state the Character should be in.
         private void CheckCharacterState()
         {
             // If the character is on the ground, set the state to OnGround.

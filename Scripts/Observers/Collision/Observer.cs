@@ -80,20 +80,23 @@ namespace Observers
                 {
                     enemy.Health -= 1;
                 }
+                else if (enemy is Enemy.BadBlock)
+                {
+                    var block = enemy as Enemy.BadBlock;
+                    block.Jump();
+
+                    // So long as the player jumps before the block hits, the player is the one attacking.
+                    if (player.State == Character.State.InAir && block.IsOnFloor())
+                    {
+                        block.Health = -1;
+                    }
+                    else if (block.IsOnPlayer())
+                    {
+                        player.TakeDamage(false);
+                    }
+                }
                 else
                 {
-                    if (enemy is Enemy.BadBlock)
-                    {
-                        enemy.Jump();
-
-                        // So long as the player jumps before the block hits, the player is the one attacking.
-                        if (player.State == Character.State.InAir)
-                        {
-                            enemy.Health = -1;
-                            return;
-                        }
-                    }
-                    player.Health -= 1;
                     player.TakeDamage(enemy.PlayerIsOnTop());
 
                     // Check that player is on top again to jump if jump is set.

@@ -28,25 +28,42 @@ namespace Enemy
                 return;
             }
 
-            if (bottomCast.IsColliding() && canFall)
+            if (IsOnPlayer() && canFall)
             {
-                // Check if colliding node is a Player.Base
-                if (bottomCast.GetCollider() is Player.Base)
-                {
-                    // Apply the regular PhysicsProcess
-                    base.PhysicsProcess(delta);
-                }
+                // Apply the regular PhysicsProcess
+                base.PhysicsProcess(delta);
             }
             else if (oy < Position.y)
             {
                 canFall = false;
                 // Move back up to original position
                 MoveAndSlide(new Vector2(0, -walkingSpeed), Vector2.Up);
+                this.State = Character.State.Idle;
             }
             else
             {
                 canFall = true;
+                velocity.y = 0;
+                this.State = Character.State.Idle;
             }
+        }
+
+        /// <summary>
+        /// Check if the block is on top of the player.
+        /// </summary>
+        public bool IsOnPlayer()
+        {
+            // Check bottomCast
+            if (bottomCast.IsColliding())
+            {
+                // Check if colliding node is a Player.Base
+                if (bottomCast.GetCollider() is Player.Base)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

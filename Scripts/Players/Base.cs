@@ -73,7 +73,10 @@ namespace Player
         /// <param name="isOnTop"> Is the player on top of the enemy? </param>
         public async void TakeDamage(bool isOnTop)
         {
-            // Only if alive.
+            // Take health regardless of alive or not.
+            Health -= 1;
+
+            // Only blink if alive.
             if (IsAlive)
             {
                 if (isOnTop)
@@ -105,7 +108,7 @@ namespace Player
                 Visible = !Visible;
                 amount++;
             }
-            
+
             isBlinking = false;
         }
     }
