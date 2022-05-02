@@ -144,15 +144,8 @@ namespace Character
             // Rotate the character
             Rotate(180);
 
-            try
-            {
-                // Remove the CollisionShape
-                RemoveChild(GetNode("Collider"));
-            }
-            catch (Exception e)
-            {
-                GD.Print(e.Message);
-            }
+            // Remove the CollisionShape
+            RemoveChild(GetNode("Collider"));
         }
 
         /// <summary>
