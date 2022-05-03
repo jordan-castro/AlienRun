@@ -1,0 +1,11 @@
+# Naming conventions for the Blocks namespace:
+
+RayCasts:
+    BottomCast - on the bottom of course.
+
+Sprites:
+    OnSprite - pretty self explanatory.
+    OffSprite - the sprite that is displayed when the block is inactive.
+
+CollisionPollygon2D:
+    Collider

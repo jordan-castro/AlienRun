@@ -1,18 +1,21 @@
 using Godot;
 using System;
 
-public class Coin : Area2D
+namespace Enviroment
 {
-    public void On_Coin_body_entered(Node body)
+    public class Coin : Area2D
     {
-        // Check if the node is a Player
-        if (body is Player.Base)
+        public void On_Coin_body_entered(Node body)
         {
-            var player = body as Player.Base;
-            // Add to player coins
-            player.Coins++;
-            // Remove from scene
-            QueueFree();
+            // Check if the node is a Player
+            if (body is Player.Base)
+            {
+                var player = body as Player.Base;
+                // Add to player coins
+                player.Coins++;
+                // Remove from scene
+                QueueFree();
+            }
         }
     }
 }
