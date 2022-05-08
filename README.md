@@ -11,8 +11,8 @@ Built using [GodotEngine](https://godotengine.org/).
 Tests are written in [gdscript](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html).
 
 ## TODO
-* Add blocks that shoot coins or give power-ups.
 * Add Fish enemy.
 * Add Flying enemy.
+* Make powerups.
+* Add blocks that give power-ups.
 * Add Coin SFX
-* Fix Collision (Again).
