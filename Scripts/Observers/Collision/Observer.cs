@@ -90,7 +90,7 @@ namespace Observers
                     {
                         block.Health = -1;
                     }
-                    else if (block.IsOnPlayer())
+                    else if (block.IsOnTopOfPlayer())
                     {
                         player.TakeDamage(false);
                     }

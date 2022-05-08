@@ -28,7 +28,7 @@ namespace Enemy
                 return;
             }
 
-            if (IsOnPlayer() && canFall)
+            if (IsOnTopOfPlayer() && canFall)
             {
                 // Apply the regular PhysicsProcess
                 base.PhysicsProcess(delta);
@@ -51,7 +51,7 @@ namespace Enemy
         /// <summary>
         /// Check if the block is on top of the player.
         /// </summary>
-        public bool IsOnPlayer()
+        public bool IsOnTopOfPlayer()
         {
             // Check bottomCast
             if (bottomCast.IsColliding())
