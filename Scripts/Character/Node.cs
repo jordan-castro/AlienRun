@@ -146,6 +146,8 @@ namespace Character
 
             // Remove the CollisionShape
             RemoveChild(GetNode("Collider"));
+
+            sprite.Idle();
         }
 
         /// <summary>
