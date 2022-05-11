@@ -11,7 +11,8 @@ Built using [GodotEngine](https://godotengine.org/).
 Tests are written in [gdscript](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html).
 
 ## TODO
-* Add Flying enemy.
+* Fix slow flying on return bug.
+* Water collision.
 * Make powerups.
 * Add blocks that give power-ups.
 * Add Coin SFX
