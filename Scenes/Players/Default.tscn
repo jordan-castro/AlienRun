@@ -12,24 +12,24 @@ animations = [ {
 "name": "Jump",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "Idle",
-"speed": 5.0
+"name": "Run",
+"speed": 4.0
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Walk",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "Run",
-"speed": 4.0
+"name": "Idle",
+"speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10, 11.5 )
+[sub_resource type="CapsuleShape2D" id=2]
+height = 3.0
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 6

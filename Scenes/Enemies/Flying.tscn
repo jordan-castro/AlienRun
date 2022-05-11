@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/Character/Animation.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Enemies/character_0024.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Enemies/character_0026.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Enemies/character_0025.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Enemies/Flying.cs" type="Script" id=5]
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 3.1665e-08, -17, 0, 0, 0, 0, -0.113968, 0.098938, 0, 0, 0, 0, -1.24797e-07, 67 )
+}
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 3.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 7.0
+
+[node name="Path2D" type="Path2D"]
+rotation = -1.86264e-09
+scale = Vector2( 1, 1 )
+curve = SubResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2( -0.000835127, -16.8747 )
+rotation = 1.57746
+offset = 0.23
+loop = false
+
+[node name="Flying" type="KinematicBody2D" parent="PathFollow2D"]
+rotation = -1.5708
+scale = Vector2( 1, 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Animation" type="AnimatedSprite" parent="PathFollow2D/Flying"]
+frames = SubResource( 1 )
+animation = "Jump"
+frame = 2
+playing = true
+script = ExtResource( 1 )
+
+[node name="Collider" type="CollisionShape2D" parent="PathFollow2D/Flying"]
+position = Vector2( 0, 1 )
+shape = SubResource( 2 )
+
+[node name="TopCast" type="RayCast2D" parent="PathFollow2D/Flying"]
+enabled = true
+cast_to = Vector2( 0, -7 )
