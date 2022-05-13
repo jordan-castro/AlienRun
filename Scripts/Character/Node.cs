@@ -169,7 +169,7 @@ namespace Character
         }
 
         // Sprite takes a moment to load, so we load it once the game starts and the player is spawned.
-        private void LoadSprite()
+        protected void LoadSprite()
         {
             if (sprite == null)
             {

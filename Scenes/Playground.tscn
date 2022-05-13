@@ -16,7 +16,7 @@
 [ext_resource path="res://Scenes/Tiles/Water.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Tiles/Dirt.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Enemies/Fish.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Scenes/Enemies/Flying.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Enemies/Flying/FlyingPath.tscn" type="PackedScene" id=17]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 7 )
@@ -88,8 +88,8 @@ position = Vector2( 255, 184 )
 [node name="Fish" parent="Enemies" instance=ExtResource( 16 )]
 position = Vector2( 801, 350 )
 
-[node name="Flying" parent="Enemies" instance=ExtResource( 17 )]
-position = Vector2( 100, 216 )
+[node name="FlyingPath" parent="Enemies" instance=ExtResource( 17 )]
+position = Vector2( 21, 103 )
 
 [node name="Blocks" type="Node2D" parent="."]
 

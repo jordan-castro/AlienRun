@@ -24,6 +24,7 @@ namespace Enemy
 
             // Setup topCast
             topCast = GetNode<RayCast2D>("TopCast");
+            topCast.Scale = new Vector2(5, 1); // This is to make the headspace larger to stomp on.
         }
 
         protected override void PhysicsProcess(float delta)

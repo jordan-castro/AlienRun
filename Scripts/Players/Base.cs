@@ -71,7 +71,7 @@ namespace Player
         /// When the player takes damage.
         /// </summary>
         /// <param name="isOnTop"> Is the player on top of the enemy? </param>
-        public async void TakeDamage(bool isOnTop)
+        public void TakeDamage(bool isOnTop)
         {
             // Take health regardless of alive or not.
             Health -= 1;
@@ -83,20 +83,17 @@ namespace Player
                 {
                     canJump = true;
                 }
-                // Change collision settings.
-                SetCollisionLayerBit(0, false);
-                SetCollisionMaskBit(1, false);
 
-                await Blink();
-
-                // Change collision settings back to normal.
-                SetCollisionLayerBit(0, true);
-                SetCollisionMaskBit(1, true);
+                Blink();
             }
         }
 
-        private async Task Blink()
+        private async void Blink()
         {
+            // Change collision settings.
+            SetCollisionLayerBit(0, false);
+            SetCollisionMaskBit(1, false);
+
             isBlinking = true;
 
             int amount = 0;
@@ -110,6 +107,10 @@ namespace Player
             }
 
             isBlinking = false;
+            // Change collision settings back to normal.
+            SetCollisionLayerBit(0, true);
+            SetCollisionMaskBit(1, true);
+
         }
     }
 }
