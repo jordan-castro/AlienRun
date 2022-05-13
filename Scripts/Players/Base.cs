@@ -68,7 +68,7 @@ namespace Player
         }
 
         /// <summary>
-        /// When the player takes damage.
+        /// When the player takes damage. Needed because sometimes the player needs to jump when attacked.
         /// </summary>
         /// <param name="isOnTop"> Is the player on top of the enemy? </param>
         public void TakeDamage(bool isOnTop)

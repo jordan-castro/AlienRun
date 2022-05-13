@@ -67,7 +67,7 @@ position = Vector2( 290, 237 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Roller" parent="Enemies" instance=ExtResource( 8 )]
-position = Vector2( 571, 147 )
+position = Vector2( 321, 285 )
 
 [node name="Beetle" parent="Enemies" instance=ExtResource( 5 )]
 position = Vector2( 569, 293 )
