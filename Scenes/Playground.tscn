@@ -93,13 +93,13 @@ scale = Vector2( 1, 1.00296 )
 position = Vector2( 419, 294 )
 
 [node name="BadBlock" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 287, 183 )
+position = Vector2( 279, 185 )
 
 [node name="BadBlock2" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 230, 184 )
+position = Vector2( 229, 185 )
 
 [node name="BadBlock3" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 255, 184 )
+position = Vector2( 254, 185 )
 
 [node name="Fish" parent="Enemies" instance=ExtResource( 16 )]
 position = Vector2( 801, 350 )

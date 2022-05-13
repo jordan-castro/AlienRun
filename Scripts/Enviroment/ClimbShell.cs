@@ -8,7 +8,7 @@ public class ClimbShell : Area2D
         if (body is Player.Base)
         {
             // Set climbing to true
-            (body as Player.Base).IsClimbing = true;
+            (body as Player.Base).StartClimb();
         }
     }
 
@@ -17,7 +17,7 @@ public class ClimbShell : Area2D
         if (body is Player.Base)
         {
             // Set climbing to false
-            (body as Player.Base).IsClimbing = false;
+            (body as Player.Base).StopClimb();
         }
     }
 }

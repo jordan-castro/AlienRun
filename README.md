@@ -11,7 +11,6 @@ Built using [GodotEngine](https://godotengine.org/).
 Tests are written in [gdscript](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html).
 
 ## TODO
-* No gravity while on Rope.
 * Water collision.
 * Make powerups.
 * Add blocks that give power-ups.

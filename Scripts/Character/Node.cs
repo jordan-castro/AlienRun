@@ -13,6 +13,7 @@ namespace Character
         Walking,
         InAir,
         Running,
+        Climbing,
     }
 
     /// <summary>
@@ -69,7 +70,11 @@ namespace Character
         protected virtual void PhysicsProcess(float delta)
         {
             LoadSprite();
-            CheckCharacterState();
+            if (State != State.Climbing)
+            {
+                CheckCharacterState();
+            }
+
             ApplyGravity(delta);
 
             // Do not move if we are dead.
@@ -102,15 +107,17 @@ namespace Character
                 velocity.y = 1;
             }
 
-            // Only apply gravity if the character is InAir.
-            if (this.State == State.InAir)
+            // Only apply gravity if the character is InAir and is not climbing.
+            if (this.State == State.InAir && this.State != State.Climbing)
             {
                 velocity.y += Utils.Globals.Gravity * delta;
             }
         }
 
-        // Checks what state the Character should be in.
-        private void CheckCharacterState()
+        /// <summary>
+        /// Checks what state the Character should be in.
+        /// </summary>
+        protected void CheckCharacterState()
         {
             // If the character is on the ground, set the state to OnGround.
             if (IsOnFloor())

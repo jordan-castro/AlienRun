@@ -34,11 +34,6 @@ namespace Player
             }
         }
 
-        /// <summary>
-        /// Whether or not the player is currently climbing a ladder/rope.
-        /// </summary>
-        public bool IsClimbing { get; set; } = false;
-
         public override void _Ready()
         {
             walkingSpeed = 100;
@@ -64,7 +59,7 @@ namespace Player
             }
             if (Input.IsActionPressed("ui_up"))
             {
-                if (IsClimbing)
+                if (State == Character.State.Climbing)
                 {
                     // Move up based on speed.
                     velocity.y = -Speed;
@@ -74,14 +69,18 @@ namespace Player
                     Jump();
                 }
             }
-            if (Input.IsActionPressed("ui_down"))
+            else if (Input.IsActionPressed("ui_down"))
             {
-                if (IsClimbing)
+                if (State == Character.State.Climbing)
                 {
                     // Move down based on speed.
                     velocity.y = Speed;
                 }
                 // TODO: Slide
+            }
+            else if (State == Character.State.Climbing)
+            {
+                velocity.y = 0;
             }
         }
 
@@ -128,6 +127,16 @@ namespace Player
             // Change collision settings back to normal.
             SetCollisionLayerBit(0, true);
             SetCollisionMaskBit(1, true);
+        }
+
+        public void StartClimb()
+        {
+            State = Character.State.Climbing;
+        }
+
+        public void StopClimb()
+        {
+            CheckCharacterState();
         }
     }
 }
