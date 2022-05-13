@@ -28,11 +28,11 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10, 11 )
+[sub_resource type="CapsuleShape2D" id=2]
+height = 2.0
 
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 6
+collision_mask = 14
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

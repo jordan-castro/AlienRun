@@ -2,8 +2,10 @@ layers:
     Player: 1
     Enemy: 2
     Terrain: 3
+    Climbable: 4
 
 Masks:
-    Player: [Enemy, Terrain]
+    Player: [Enemy, Terrain, Climbable]
     Enemy: [Player, Enemy, Terrain]
     Terrain: [Player, Enemy]
+    Climbable: [Player]

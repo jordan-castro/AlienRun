@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/Players/Default.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Tiles/Grass.tscn" type="PackedScene" id=2]
@@ -8,15 +8,17 @@
 [ext_resource path="res://Scenes/Enemies/Needle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Level.cs" type="Script" id=7]
 [ext_resource path="res://Scenes/Enemies/Roller.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Enviroment/Coin.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Enemies/BadBlock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Tiles/Cloud.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Tiles/Decoration.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Scenes/Blocks/CoinBlock.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Enviroment/Blocks/CoinBlock.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/Tiles/Water.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Tiles/Dirt.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Enemies/Fish.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Scenes/Enemies/Flying/FlyingPath.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Tiles/Climb.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/Enviroment/ClimbShell.tscn" type="PackedScene" id=19]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 7 )
@@ -47,22 +49,36 @@ tile_data = PoolIntArray( 720924, 4, 0, 720925, 6, 0, 720926, 8, 0, 786460, 5, 0
 [node name="Leaves" parent="Tiles/Leaves" instance=ExtResource( 4 )]
 tile_data = PoolIntArray( 655386, 4, 0, 655387, 6, 0, 655388, 8, 0, 655390, 4, 0, 655391, 6, 0, 655392, 8, 0, 720922, 5, 0, 720923, 7, 0, 720924, 9, 0, 720926, 5, 0, 720927, 7, 0, 720928, 9, 0, 786458, 10, 0, 786459, 11, 0, 786460, 12, 0, 786462, 10, 0, 786463, 11, 0, 786464, 12, 0 )
 
+[node name="Climbs" type="Node2D" parent="Tiles"]
+
+[node name="Tiles" parent="Tiles/Climbs" instance=ExtResource( 18 )]
+tile_data = PoolIntArray( 589849, 0, 0, 655385, 1, 0, 720921, 1, 0, 786457, 1, 0, 851993, 1, 0, 917529, 1, 0, 983065, 1, 0, 1048601, 2, 0 )
+
+[node name="Shells" type="Node2D" parent="Tiles/Climbs"]
+
+[node name="ClimbShell" parent="Tiles/Climbs/Shells" instance=ExtResource( 19 )]
+position = Vector2( 459, 232 )
+scale = Vector2( 1, 7 )
+
 [node name="Coins" type="Node2D" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource( 9 )]
-position = Vector2( 294, 256 )
+position = Vector2( 191, 183 )
 
 [node name="Coin2" parent="Coins" instance=ExtResource( 9 )]
-position = Vector2( 311, 254 )
+position = Vector2( 169, 184 )
 
 [node name="Coin3" parent="Coins" instance=ExtResource( 9 )]
-position = Vector2( 334, 253 )
+position = Vector2( 206, 183 )
 
 [node name="Coin4" parent="Coins" instance=ExtResource( 9 )]
-position = Vector2( 312, 239 )
+position = Vector2( 191, 164 )
 
 [node name="Coin5" parent="Coins" instance=ExtResource( 9 )]
-position = Vector2( 290, 237 )
+position = Vector2( 167, 164 )
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 205, 165 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -94,10 +110,7 @@ position = Vector2( 21, 103 )
 [node name="Blocks" type="Node2D" parent="."]
 
 [node name="CoinBlock" parent="Blocks" instance=ExtResource( 13 )]
-position = Vector2( 132, 217 )
-
-[node name="CoinBlock2" parent="Blocks" instance=ExtResource( 13 )]
-position = Vector2( 86, 34 )
+position = Vector2( 139, 225 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 206, 291 )

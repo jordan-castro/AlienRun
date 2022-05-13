@@ -54,7 +54,7 @@ namespace Enviroment
             private void ShootCoin()
             {
                 // Load the coin object
-                PackedScene scene = (PackedScene)ResourceLoader.Load("res://Scenes/Coin.tscn");
+                PackedScene scene = (PackedScene)ResourceLoader.Load("res://Scenes/Enviroment/Coin.tscn");
                 var coin = (Enviroment.Coin)scene.Instance();
                 coin.Name = "Coin";
 
