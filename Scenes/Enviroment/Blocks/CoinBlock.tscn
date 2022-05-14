@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets/Blocks/tile_0011.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Blocks/tile_0031.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Enviroment/Blocks/tile_0011.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Enviroment/Blocks/tile_0031.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Enviroment/Blocks/Coin.cs" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
