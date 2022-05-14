@@ -14,5 +14,17 @@ Tests are written in [gdscript](https://docs.godotengine.org/en/stable/tutorials
 * Possibly update how we handle CharacterState for climbing etc.
 * Water collision.
 * Make powerups.
+    * Double Jump power up.
+    * Force field power up.
+
+* Add spikes.
+
 * Add blocks that give power-ups.
 * Add Coin SFX
+
+* Add UI
+    * Lives
+    * Score
+    * Timer
+    * Level
+    * Power-ups
