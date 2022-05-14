@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+namespace Enviroment;
 public class ClimbShell : Area2D
 {
     public void On_ClimbShell_body_entered(Node body)

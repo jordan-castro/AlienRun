@@ -1,6 +1,7 @@
 using Godot;
 using System;
-using Enemy;
+
+namespace Enemy;
 
 public class Fish : Base
 {

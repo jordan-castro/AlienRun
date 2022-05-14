@@ -2,6 +2,8 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
+namespace Enviroment;
+
 public class Launcher : StaticBody2D
 {
     private Sprite idle;
@@ -28,10 +30,11 @@ public class Launcher : StaticBody2D
         {
             var player = ray.GetCollider() as Player.Base;
             // Launcher should jump player quite high
-            player.JumpForce *= 2;
+            player.JumpForce -= 100;
             player.Jump();
             // Reset jump force
-            player.JumpForce /= 2;
+            player.JumpForce += 100;
+
             
             isLaunched = true;
         }
