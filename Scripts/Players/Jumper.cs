@@ -33,18 +33,7 @@ namespace Player
             // Replace the player with the correct scene.
             PackedScene scene = GD.Load<PackedScene>("res://Scenes/Players/Jumper.tscn");
 
-            // Get the current Level scene
-            AlienRun.Level level = (AlienRun.Level)player.GetParent();
-
-            // Get current position and remove the old player.
-            Vector2 position = player.GlobalPosition;
-            player.QueueFree();
-
-            // Add new player.
-            Node2D newPlayer = scene.Instance() as Node2D;
-            level.AddChild(newPlayer);
-            level.CollisionSetup(newPlayer as Character.Node);
-            newPlayer.GlobalPosition = position;
+            PowerUp(player, scene);
         }
     }
 }

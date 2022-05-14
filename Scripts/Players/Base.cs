@@ -62,7 +62,7 @@ namespace Player
             {
                 Jump();
             }
-            
+
             if (Input.IsActionPressed("ui_up"))
             {
                 if (State == Character.State.Climbing)
@@ -139,6 +139,25 @@ namespace Player
         public void StopClimb()
         {
             CheckCharacterState();
+        }
+
+        /// <summary>
+        /// Power up the player.
+        /// </summary>
+        protected void PowerUp(Base oldPlayer, PackedScene scene)
+        {
+            // Get the current Level scene
+            AlienRun.Level level = (AlienRun.Level)oldPlayer.GetParent();
+
+            // Get current position and remove the old player.
+            Vector2 position = oldPlayer.GlobalPosition;
+            oldPlayer.QueueFree();
+
+            // Add new player.
+            Node2D newPlayer = scene.Instance() as Node2D;
+            level.AddChild(newPlayer);
+            level.CollisionSetup(newPlayer as Character.Node);
+            newPlayer.GlobalPosition = position;
         }
     }
 }
