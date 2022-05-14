@@ -61,6 +61,5 @@ public class Launcher : StaticBody2D
     {
         await Task.Delay(400);
         isLaunched = false;
-        UpdateState();
     }
 }
