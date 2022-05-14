@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Enviroment/Launcher.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Enviroment/tile_0107.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Enviroment/tile_0108.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 7 )
+
+[node name="Launcher" type="StaticBody2D"]
+collision_layer = 8
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Idle" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3 )
+shape = SubResource( 1 )
+
+[node name="Launched" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, 1 )
+texture = ExtResource( 3 )
+
+[node name="Ray" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, -10 )
