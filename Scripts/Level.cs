@@ -38,7 +38,7 @@ namespace AlienRun
             offScreen.NotifyObservers();
         }
 
-        private void CollisionSetup(Character.Node child)
+        public void CollisionSetup(Character.Node child)
         {
             GD.Print("Child is: " + child.Name); // TODO: Remove this before production
 

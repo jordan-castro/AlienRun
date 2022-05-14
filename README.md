@@ -11,10 +11,8 @@ Built using [GodotEngine](https://godotengine.org/).
 Tests are written in [gdscript](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html).
 
 ## TODO
-* Possibly update how we handle CharacterState for climbing etc.
 * Water collision.
 * Make powerups.
-    * Double Jump power up.
     * Force field power up.
 
 * Add spikes.

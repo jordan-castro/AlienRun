@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Enemies/character_0024.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Enemies/character_0026.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Enemies/character_0025.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/Enemies/Flying/Flying.cs" type="Script" id=5]
+[ext_resource path="res://Scripts/Enemies/Flying/FlyingNode.cs" type="Script" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -28,7 +28,7 @@ __meta__ = {
 [node name="Animation" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Jump"
-frame = 1
+frame = 2
 playing = true
 script = ExtResource( 1 )
 

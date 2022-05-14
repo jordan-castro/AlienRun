@@ -57,16 +57,18 @@ namespace Player
             {
                 velocity.x = 0;
             }
+
+            if (Input.IsActionJustPressed("ui_up") && State != Character.State.Climbing)
+            {
+                Jump();
+            }
+            
             if (Input.IsActionPressed("ui_up"))
             {
                 if (State == Character.State.Climbing)
                 {
                     // Move up based on speed.
                     velocity.y = -Speed;
-                }
-                else
-                {
-                    Jump();
                 }
             }
             else if (Input.IsActionPressed("ui_down"))

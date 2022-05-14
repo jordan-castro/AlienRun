@@ -1,27 +1,29 @@
 using Godot;
 using System;
 
-namespace Enemy;
-
-public class Fish : Base
+namespace Enemy
 {
-    public override void _Ready()
-    {
-        base._Ready();
-        JumpForce = -250;
-        velocity.x = 0;
-    }
 
-    protected override void PhysicsProcess(float delta)
+    public class Fish : Base
     {
-        base.PhysicsProcess(delta);
-
-        if (this.State != Character.State.InAir) 
+        public override void _Ready()
         {
-            // Jump after a random amount of time
-            if (GD.Randf() < 0.1f)
+            base._Ready();
+            JumpForce = -250;
+            velocity.x = 0;
+        }
+
+        protected override void PhysicsProcess(float delta)
+        {
+            base.PhysicsProcess(delta);
+
+            if (this.State != Character.State.InAir)
             {
-                Jump();
+                // Jump after a random amount of time
+                if (GD.Randf() < 0.1f)
+                {
+                    Jump();
+                }
             }
         }
     }
