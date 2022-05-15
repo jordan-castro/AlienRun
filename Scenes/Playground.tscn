@@ -111,7 +111,7 @@ position = Vector2( 801, 350 )
 position = Vector2( 21, 103 )
 
 [node name="Spike" parent="Enemies" instance=ExtResource( 22 )]
-position = Vector2( 110, 288 )
+position = Vector2( 110, 297 )
 
 [node name="Blocks" type="Node2D" parent="."]
 
