@@ -11,8 +11,6 @@ Built using [GodotEngine](https://godotengine.org/).
 Tests are written in [gdscript](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html).
 
 ## TODO
-* Water collision.
-
 * Add Coin SFX
 
 * Add UI
