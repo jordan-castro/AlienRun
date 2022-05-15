@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Enviroment/Blocks/PowerBlock.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Enviroment/Blocks/tile_0030.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Enviroment/Blocks/tile_0010.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9, 9 )
+
+[node name="PowerBlock" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+isActive = true
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="OnSprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="OffSprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="BottomCast" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 12 )

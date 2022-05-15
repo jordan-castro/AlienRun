@@ -20,7 +20,7 @@
 [ext_resource path="res://Scenes/Tiles/Climb.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Scenes/Enviroment/ClimbShell.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Enviroment/Launcher.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Scenes/Enviroment/Powerups/JumpPower.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/Enviroment/Blocks/PowerBlock.tscn" type="PackedScene" id=21]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 7 )
@@ -114,13 +114,14 @@ position = Vector2( 21, 103 )
 [node name="CoinBlock" parent="Blocks" instance=ExtResource( 13 )]
 position = Vector2( 139, 225 )
 
+[node name="PowerBlock" parent="Blocks" instance=ExtResource( 21 )]
+position = Vector2( 83, 47 )
+powerUp = 2
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 206, 291 )
 
 [node name="Launchers" type="Node2D" parent="."]
 
 [node name="Launcher" parent="Launchers" instance=ExtResource( 20 )]
-position = Vector2( 640, 296 )
-
-[node name="JumpPower" parent="." instance=ExtResource( 21 )]
-position = Vector2( 64, 245 )
+position = Vector2( 639, 297 )

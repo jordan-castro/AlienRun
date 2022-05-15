@@ -17,7 +17,6 @@ Tests are written in [gdscript](https://docs.godotengine.org/en/stable/tutorials
 
 * Add spikes.
 
-* Add blocks that give power-ups.
 * Add Coin SFX
 
 * Add UI
