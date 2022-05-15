@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Players/Default.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Tiles/Grass.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Scenes/Enviroment/ClimbShell.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Enviroment/Launcher.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scenes/Enviroment/Blocks/PowerBlock.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/Enviroment/Spike.tscn" type="PackedScene" id=22]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 7 )
@@ -108,6 +109,9 @@ position = Vector2( 801, 350 )
 
 [node name="FlyingPath" parent="Enemies" instance=ExtResource( 17 )]
 position = Vector2( 21, 103 )
+
+[node name="Spike" parent="Enemies" instance=ExtResource( 22 )]
+position = Vector2( 110, 288 )
 
 [node name="Blocks" type="Node2D" parent="."]
 

@@ -12,10 +12,6 @@ Tests are written in [gdscript](https://docs.godotengine.org/en/stable/tutorials
 
 ## TODO
 * Water collision.
-* Make powerups.
-    * Force field power up.
-
-* Add spikes.
 
 * Add Coin SFX
 
