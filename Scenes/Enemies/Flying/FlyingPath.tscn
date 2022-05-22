@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0, -40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39 )
+"points": PoolVector2Array( 0, 0, 0, 0, 0, -89, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 78 )
 }
 
 [node name="FlyingPath" type="Path2D"]
@@ -16,7 +16,7 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2( 0, -0.509372 )
+position = Vector2( 0, -49.4981 )
 rotation = 1.5708
 offset = 39.5
 loop = false

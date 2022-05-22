@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Players/Default.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Tiles/Grass.tscn" type="PackedScene" id=2]
+
+[node name="Level_2" type="Node2D"]
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="Grass" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( -369, 8 )
+tile_data = PoolIntArray( -720892, 0, 0, -720891, 1, 0, -720890, 1, 0, -720889, 1, 0, -720888, 1, 0, -720887, 2, 0 )
+
+[node name="Shells" type="Node2D" parent="."]
+
+[node name="Launchers" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Blocks" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -212, -226 )

@@ -1,0 +1,9 @@
+# Naming for levels
+
+Level_(number)
+Enemies Node2D container
+Tiles Node2D container
+Coins Node2D container
+Blocks Node2D container
+Launchers Node2D container
+Shells Node2D container

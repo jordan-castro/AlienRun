@@ -13,6 +13,11 @@ animations = [ {
 "name": "Jump",
 "speed": 3.0
 }, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Walk",
@@ -22,11 +27,6 @@ animations = [ {
 "loop": true,
 "name": "Run",
 "speed": 4.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -51,10 +51,10 @@ shape = SubResource( 2 )
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.7, 0.7 )
 
 [node name="Main" parent="Camera" instance=ExtResource( 5 )]
-margin_left = -253.0
-margin_top = -147.0
-margin_right = -177.0
-margin_bottom = -106.0
+margin_left = -355.0
+margin_top = -207.0
+margin_right = -279.0
+margin_bottom = -166.0

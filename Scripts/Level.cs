@@ -7,6 +7,9 @@ namespace AlienRun
 {
     public class Level : Node2D
     {
+        [Export]
+        private int worldBound = 0;
+
         public Observers.Collision.Subject collision;
         public Observers.OffScreen.Subject offScreen;
 
@@ -15,7 +18,7 @@ namespace AlienRun
             var children = GetNodes();
 
             collision = new Observers.Collision.Subject();
-            offScreen = new Observers.OffScreen.Subject(500);
+            offScreen = new Observers.OffScreen.Subject(worldBound);
 
             foreach (Node2D child in children)
             {
