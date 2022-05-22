@@ -175,7 +175,7 @@ namespace Player
             oldPlayer.QueueFree();
 
             // Add new player.
-            level.AddChild(newPlayer);
+            level.CallDeferred("add_child", newPlayer);
             level.CollisionSetup(newPlayer);
             newPlayer.GlobalPosition = position;
         }

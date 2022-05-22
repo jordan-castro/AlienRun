@@ -1,38 +1,39 @@
 using Godot;
 using System;
 
-namespace Enviroment;
-
-public class ChangeLevel : Area2D
+namespace Enviroment
 {
-    public void _on_ChangeLevel_body_entered(Node body)
+    public class ChangeLevel : Area2D
     {
-        if (body is Player.Base)
+        public void _on_ChangeLevel_body_entered(Node body)
         {
-            int currentLevel = GetTree().CurrentScene.Name.Split("_")[1].ToInt();
-
-            // Find out how many levels we have in the levels directory
-            int numberOfLevels = 0;
-
-            Directory dir = new Directory();
-            if (dir.Open("res://Scenes/Levels") == Error.Ok)
+            if (body is Player.Base)
             {
-                dir.ListDirBegin();
-                string fileName = dir.GetNext();
-                while (fileName != "")
+                int currentLevel = GetTree().CurrentScene.Name.Split("_")[1].ToInt();
+
+                // Find out how many levels we have in the levels directory
+                int numberOfLevels = 0;
+
+                Directory dir = new Directory();
+                if (dir.Open("res://Scenes/Levels") == Error.Ok)
                 {
-                    if (fileName.Contains("Level_") && fileName.EndsWith(".tscn"))
+                    dir.ListDirBegin();
+                    string fileName = dir.GetNext();
+                    while (fileName != "")
                     {
-                        numberOfLevels++;
+                        if (fileName.Contains("Level_") && fileName.EndsWith(".tscn"))
+                        {
+                            numberOfLevels++;
+                        }
+                        fileName = dir.GetNext();
                     }
-                    fileName = dir.GetNext();
                 }
-            }
 
-            if (numberOfLevels >= currentLevel + 1)
-            {
-                // Change to next level
-                GetTree().ChangeScene("res://Scenes/Levels/Level_" + (currentLevel + 1).ToString() + ".tscn");
+                if (numberOfLevels >= currentLevel + 1)
+                {
+                    // Change to next level
+                    GetTree().ChangeScene("res://Scenes/Levels/Level_" + (currentLevel + 1).ToString() + ".tscn");
+                }
             }
         }
     }
