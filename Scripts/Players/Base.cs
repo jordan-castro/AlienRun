@@ -6,7 +6,22 @@ namespace Player
 {
     public class Base : Character.Node
     {
-        public int Coins { get; set; } = 0;
+        [Signal]
+        public delegate void score_changed(int score);
+
+        [Signal]
+        public delegate void health_changed(int health);
+
+        // Coin amount is held outside the Coins property
+        private int cointAmount = 0;
+        public int Coins
+        {
+            get => cointAmount; set
+            {
+                cointAmount = value;
+                EmitSignal(nameof(score_changed), value);
+            }
+        }
 
         private bool isBlinking = false;
 
@@ -17,6 +32,7 @@ namespace Player
                 if (!isBlinking)
                 {
                     base.Health = value;
+                    EmitSignal(nameof(health_changed), value);
                 }
             }
         }
@@ -38,6 +54,8 @@ namespace Player
         {
             walkingSpeed = 100;
             Health = 2;
+
+            EmitSignal(nameof(score_changed), cointAmount);
         }
 
         protected override void PhysicsProcess(float delta)
@@ -121,7 +139,7 @@ namespace Player
                 // Wait for a third of a second
                 await Task.Delay(150);
                 // Toggle visibility
-                Visible = !Visible;
+                sprite.Visible = !sprite.Visible;
                 amount++;
             }
 
@@ -148,15 +166,17 @@ namespace Player
         {
             // Get the current Level scene
             AlienRun.Level level = (AlienRun.Level)oldPlayer.GetParent();
+            Player.Base newPlayer = scene.Instance() as Player.Base;
 
-            // Get current position and remove the old player.
+            // Get current position.
             Vector2 position = oldPlayer.GlobalPosition;
+            newPlayer.Coins = oldPlayer.Coins;
+            // remove the old player
             oldPlayer.QueueFree();
 
             // Add new player.
-            Node2D newPlayer = scene.Instance() as Node2D;
             level.AddChild(newPlayer);
-            level.CollisionSetup(newPlayer as Character.Node);
+            level.CollisionSetup(newPlayer);
             newPlayer.GlobalPosition = position;
         }
     }
