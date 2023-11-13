@@ -1,6 +1,8 @@
 # Alien Run
 A small game that is inspired by Super Mario Bros. This is just a game to get started with game development. Please note that this is a work in progress and is not yet finished.
 
+*Important* Alien Run has been archived. All future work in Alien Run will be done in [Pixel AI Dash](https://github.com/jordan-castro/Pixel_AI_Dash).
+
 ## Version
 0.0.1
 
